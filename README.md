@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Below you will find some information on how to perform common tasks.  
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/template/README.md).
 
@@ -576,3 +577,7 @@ Note that GitHub Pages doesn't support routers that use the HTML5 `pushState` hi
 ## Something Missing?
 
 If you have ideas for more “How To” recipes that should be on this page, [let us know](https://github.com/facebookincubator/create-react-app/issues) or [contribute some!](https://github.com/facebookincubator/create-react-app/edit/master/template/README.md)
+=======
+# store-management
+Application written in React.js for managing online business
+>>>>>>> 3f434171a9e13d24eb1bf02a6f8504a0a2ab2b7a
