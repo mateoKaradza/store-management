@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import user from './user';
+import info from './user';
 import isAuthenticated from './isAuthenticated';
 import redirect from './redirect';
 
 export default combineReducers({
-  user,
+  info,
   isAuthenticated,
   redirect,
 });

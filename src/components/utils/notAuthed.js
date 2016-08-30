@@ -27,10 +27,10 @@ export default function (ComposedComponent) {
     redirect: PropTypes.string,
   };
 
-  function mapStateToProps({ user }) {
+  function mapStateToProps({ auth }) {
     return {
-      isAuthenticated: user.isAuthenticated,
-      redirect: user.redirect,
+      isAuthenticated: auth.isAuthenticated,
+      redirect: auth.redirect,
     };
   }
 

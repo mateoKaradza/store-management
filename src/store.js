@@ -2,13 +2,13 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 
-import reducers from './reducers/index';
+import reducer from './reducer';
 import { loadUserFromLocalStorage } from './components/login/actions';
 
 const logger = createLogger();
 
 const store = createStore(
-  reducers,
+  reducer,
   compose(
     applyMiddleware(thunk, logger),
     window.devToolsExtension ? window.devToolsExtension() : f => f

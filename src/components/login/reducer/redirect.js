@@ -1,4 +1,4 @@
-import { SET_REDIRECT, REDIRECTING } from '../../components/login/constants';
+import { SET_REDIRECT, REDIRECTING } from '../types';
 
 export default function (state = null, action) {
   switch (action.type) {

@@ -26,9 +26,9 @@ export default function (ComposedComponent) {
     setRedirect: PropTypes.func.isRequired,
   };
 
-  function mapStateToProps({ user }) {
+  function mapStateToProps({ auth }) {
     return {
-      isAuthenticated: user.isAuthenticated,
+      isAuthenticated: auth.isAuthenticated,
     };
   }
 

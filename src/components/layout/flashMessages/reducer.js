@@ -1,8 +1,7 @@
 import shortid from 'shortid';
 import findIndex from 'lodash/findIndex';
 
-import { CREATE_FLASH_MESSAGE, DELETE_FLASH_MESSAGE }
-  from '../components/layout/messages/constants';
+import { CREATE_FLASH_MESSAGE, DELETE_FLASH_MESSAGE } from './types';
 
 function deleteMessage(state, id) {
   const index = findIndex(state, { id });

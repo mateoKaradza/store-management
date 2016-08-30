@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import { LOGIN_SUCCESS, LOGOUT_SUCCESS, LOGIN_ERROR } from '../../components/login/constants';
+import { LOGIN_SUCCESS, LOGOUT_SUCCESS } from '../types';
 
 // define user properties
 
@@ -12,9 +12,6 @@ export default function (state = {}, action) {
       return obj;
     case LOGOUT_SUCCESS:
       return {};
-    case LOGIN_ERROR:
-      obj.err = action.err;
-      return obj;
     default:
       return state;
   }

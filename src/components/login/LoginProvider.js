@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import { login } from './actions';
 import Login from './Login';
 
-function mapStateToProps({ user }) {
+function mapStateToProps({ auth }) {
   return {
-    redirect: user.redirect,
-    err: user.user.err,
+    redirect: auth.redirect,
   };
 }
 

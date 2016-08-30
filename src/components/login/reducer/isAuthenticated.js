@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGOUT_SUCCESS } from '../../components/login/constants';
+import { LOGIN_SUCCESS, LOGOUT_SUCCESS } from '../types';
 
 export default function (state = false, action) {
   switch (action.type) {

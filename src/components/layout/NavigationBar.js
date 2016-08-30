@@ -14,7 +14,7 @@ function mapLinks(links) {
   ));
 }
 
-const NavigationBar = ({ user, logout }) => {
+const NavigationBar = ({ auth, logout }) => {
   const userRoutes = [
     { to: '/', label: 'Home' },
     { to: '/customers', label: 'Customers' },
@@ -31,12 +31,12 @@ const NavigationBar = ({ user, logout }) => {
       <div className="row">
         <nav className="navbar navbar-light bg-faded">
           <div className="nav navbar-nav">
-            {user.isAuthenticated === true
+            {auth.isAuthenticated === true
               ? mapLinks(userRoutes)
               : mapLinks(guestRoutes)
             }
             <div className="pull-xs-right">
-              {user.isAuthenticated === true
+              {auth.isAuthenticated === true
                 ? <button className="btn btn-secondary" onClick={logout}>Logout</button>
                 : <Link to="/login"><button className="btn btn-secondary">Login</button></Link>
               }
@@ -49,7 +49,7 @@ const NavigationBar = ({ user, logout }) => {
 };
 
 NavigationBar.propTypes = {
-  user: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
   logout: PropTypes.func.isRequired,
 };
 
