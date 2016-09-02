@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import NavigationBar from './NavigationBar';
-import FlashMessageProvider from './messages/FlashMessageProvider';
+import FlashMessageProvider from './flashMessages/FlashMessageProvider';
 
 const Layout = ({ auth, logout, children }) => {
   const contentStyle = {

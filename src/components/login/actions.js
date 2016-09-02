@@ -2,9 +2,9 @@ import { browserHistory } from 'react-router';
 
 import API from '../../config/api';
 import parseJSON from '../utils/apiCalls';
-import { LOGIN_SUCCESS, LOGOUT_SUCCESS, REDIRECTING, SET_REDIRECT } from './constants';
+import { LOGIN_SUCCESS, LOGOUT_SUCCESS, REDIRECTING, SET_REDIRECT } from './types';
 
-import { createFlashMessage, deleteFlashMessage } from '../layout/messages/actions';
+import { createFlashMessage, deleteFlashMessage } from '../layout/flashMessages/actions';
 
 function redirect(url) {
   browserHistory.replace(url);

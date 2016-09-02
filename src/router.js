@@ -4,6 +4,7 @@ import Layout from './components/layout/LayoutProvider';
 import Home from './components/home';
 import Login from './components/login';
 import NotFound from './components/not-found';
+import Customers from './components/customers';
 
 const Routes = () => {
   const rootRoute = {
@@ -11,6 +12,7 @@ const Routes = () => {
     childRoutes: [
       Home,
       Login,
+      Customers,
       NotFound,
     ],
   };

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 const Wrapper = ({ children }) => (
-  <div>{ children }</div>
+  <div>{children}</div>
 );
 
 Wrapper.propTypes = {
