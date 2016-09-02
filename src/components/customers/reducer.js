@@ -1,7 +1,10 @@
-import { combineReducers } from 'redux';
+import { CUSTOMERS_FILTER_SUCCESS } from './types';
 
-import customers from './customers';
-
-export default combineReducers({
-  customers,
-});
+export default function (state = [], action) {
+  switch (action.type) {
+    case CUSTOMERS_FILTER_SUCCESS:
+      return action.customers;
+    default:
+      return state;
+  }
+}

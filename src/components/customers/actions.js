@@ -1,14 +1,14 @@
 import API from '../../config/api';
 import parseJSON from '../utils/apiCalls';
 
-import CUSTOMERS_FILTER_SUCCESS from './types';
+import { CUSTOMERS_FILTER_SUCCESS } from './types';
 import { createFlashMessage } from '../layout/flashMessages/actions';
 
 function filterSuccess(customers) {
   return { type: CUSTOMERS_FILTER_SUCCESS, customers };
 }
 
-export default function filterCustomers(filter) {
+export function filterCustomers(filter) {
   return dispatch => {
     let url = `${API}customers/`;
     if (filter !== '')
@@ -30,3 +30,5 @@ export default function filterCustomers(filter) {
       });
   };
 }
+
+export default filterCustomers;
