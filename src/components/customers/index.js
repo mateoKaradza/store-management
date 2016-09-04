@@ -10,5 +10,8 @@ export default {
   childRoutes: [{
     path: 'new',
     component: CustomerDetailProvider,
+  }, {
+    path: ':id',
+    component: CustomerDetailProvider,
   }],
 };

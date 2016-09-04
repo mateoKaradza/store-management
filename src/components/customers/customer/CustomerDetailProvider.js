@@ -1,12 +1,15 @@
 import { connect } from 'react-redux';
 
-//  Implement sorting, filter
 import CustomerDetail from './CustomerDetail';
+import { getCustomer } from './actions';
 
-function mapStateToProps({ customers }) {
+function mapStateToProps({ details }) {
+  const { customer } = details;
   return {
-    customer: customers,
+    customer: customer.customer,
+    orders: customer.orders,
+    items: customer.items,
   };
 }
 
-export default connect(mapStateToProps)(CustomerDetail);
+export default connect(mapStateToProps, { getCustomer })(CustomerDetail);

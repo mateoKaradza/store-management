@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { filterCustomers } from './actions';
 import AllCustomers from './AllCustomers';
 
-function mapStateToProps({ collections }) {
-  return { customers: collections.customers };
+function mapStateToProps({ lists }) {
+  return { customers: lists.customers };
 }
 
 export default connect(mapStateToProps, { filter: filterCustomers })(AllCustomers);
