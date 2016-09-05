@@ -7,7 +7,6 @@ const AllCustomers = ({ customers, filter }) => (
   <div>
     <section className="content-header">
       <h1>All Customers<small>find the customer you are looking for</small></h1>
-
     </section>
     <section className="content">
       <div className="row">

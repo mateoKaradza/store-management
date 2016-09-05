@@ -9,11 +9,9 @@ const CustomerListItem = ({ customer }) => (
     <td>{customer.username}</td>
     <td>{customer.email}</td>
     <td>
-      <div>
-        <Link to={`/Customers/${customer.customer_id}`} style={{ color: 'black' }}>
-          <i className="fa fa-eye" />
-        </Link>
-      </div>
+      <Link to={`/Customers/${customer.customer_id}`} style={{ color: 'black' }}>
+        <button className="btn btn-primary btn-block btn-flat btn-xs">View</button>
+      </Link>
     </td>
   </tr>
 );

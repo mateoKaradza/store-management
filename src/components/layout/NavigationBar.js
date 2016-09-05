@@ -22,10 +22,10 @@ class NavigationBar extends Component {
   render() {
     const userRoutes = [
       { to: '/', label: 'Home', icon: 'home' },
-      { to: '/customers', label: 'Customers', icon: 'user' },
-      { to: '/orders', label: 'Orders', icon: 'ticket' },
-      { to: '/products', label: 'Products', icon: 'leaf' },
-      { to: '/vendors', label: 'Vendors', icon: 'truck' },
+      { to: '/Customers', label: 'Customers', icon: 'user' },
+      { to: '/Orders', label: 'Orders', icon: 'ticket' },
+      { to: '/Products', label: 'Products', icon: 'leaf' },
+      { to: '/Vendors', label: 'Vendors', icon: 'truck' },
     ];
 
     const { auth, logout } = this.props;
@@ -36,7 +36,7 @@ class NavigationBar extends Component {
         <section className="sidebar">
           <div className="user-panel">
             <div className="pull-left image">
-              <img src="dist/img/user-male-icon.png" className="img-circle" role="presentation" />
+              <img src="/dist/img/user-male-icon.png" className="img-circle" role="presentation" />
             </div>
             <div className="pull-left info">
               <p>Mateo Karadza</p>
