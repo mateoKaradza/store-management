@@ -23,23 +23,16 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div className="input-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search for ..."
-              onChange={this.handleInputChange}
-              value={this.state.val}
-            />
-            <span className="input-group-btn">
-              <button className="btn btn-secondary" type="submit">Go!</button>
-            </span>
-          </div>
-        </form>
-
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        <input
+          type="text"
+          className="form-control input-sm"
+          placeholder="Search for ..."
+          onChange={this.handleInputChange}
+          value={this.state.val}
+        />
+        <span className="glyphicon glyphicon-search form-control-feedback" />
+      </form>
     );
   }
 }

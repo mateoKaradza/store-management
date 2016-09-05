@@ -1,61 +1,67 @@
 import React, { Component, PropTypes } from 'react';
 import { Link, withRouter } from 'react-router';
-
-function mapLinks(links) {
-  return links.map((link) => (
-    <Link
-      to={link.to}
-      key={link.to}
-      className="nav-link nav-item"
-      activeClassName="active"
-    >
-      {link.label}
-    </Link>
-  ));
-}
-
-const userRoutes = [
-  { to: '/', label: 'Home' },
-  { to: '/customers', label: 'Customers' },
-  { to: '/orders', label: 'Orders' },
-  { to: '/products', label: 'Products' },
-  { to: '/vendors', label: 'Vendors' },
-  { to: '/users', label: 'users' },
-];
+import classnames from 'classnames';
 
 class NavigationBar extends Component {
 
+  mapLinks(links) {
+    return links.map((link) => (
+      <li key={link.to} className={classnames({ active: this.props.router.isActive(link.to) })}>
+        <Link
+          to={link.to}
+          key={link.to}
+          className="nav-link nav-item"
+          activeClassName="active"
+        >
+          <i className={`fa fa-${link.icon}`} />{link.label}
+        </Link>
+      </li>
+    ));
+  }
+
   render() {
-    console.log(this.props.router.isActive('/customers'));
+    const userRoutes = [
+      { to: '/', label: 'Home', icon: 'home' },
+      { to: '/customers', label: 'Customers', icon: 'user' },
+      { to: '/orders', label: 'Orders', icon: 'ticket' },
+      { to: '/products', label: 'Products', icon: 'leaf' },
+      { to: '/vendors', label: 'Vendors', icon: 'truck' },
+    ];
+
     const { auth, logout } = this.props;
+
+    if (!auth.isAuthenticated) return null;
     return (
-      <aside className="main-sidebar">
+      <aside className="main-sidebar" style={{ paddingTop: '0px' }}>
         <section className="sidebar">
           <div className="user-panel">
             <div className="pull-left image">
-              <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg" className="img-circle" alt="User Image" />
+              <img src="dist/img/user-male-icon.png" className="img-circle" role="presentation" />
             </div>
             <div className="pull-left info">
               <p>Mateo Karadza</p>
-              <a href="#" onClick={logout}><i className="fa fa-circle text-success" /> Logout</a>
+              <button
+                onClick={logout}
+                className="btn bg-purple btn-block btn-flat btn-xs"
+              >
+                Logout
+              </button>
             </div>
           </div>
           <ul className="sidebar-menu">
             <li className="header">NAVIGATION</li>
-            <li>
-              <Link to="/customers"><i className="fa fa-link" /><span>Customers</span></Link>
-            </li>
-            <li><a href="#"><i className="fa fa-link"></i> <span>Another Link</span></a></li>
+            {this.mapLinks(userRoutes)}
           </ul>
         </section>
       </aside>
     );
   }
-};
+}
 
 NavigationBar.propTypes = {
   auth: PropTypes.object.isRequired,
   logout: PropTypes.func.isRequired,
+  router: PropTypes.object.isRequired,
 };
 
 export default withRouter(NavigationBar);

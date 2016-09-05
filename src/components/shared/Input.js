@@ -2,9 +2,14 @@ import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 
 // Text Input, Number, Date - <input type={type} />
+//
+// rework!!
+//
 
 const Input = ({ label, stateKey, value, required, readOnly, type, error, onChange, children, hasFeedback, placeholder }) => (
-  <div className={classnames('form-group', { 'has-danger': error }, { 'has-feedback': hasFeedback })}>
+  <div
+    className={classnames('form-group', { 'has-danger': error }, { 'has-feedback': hasFeedback })}
+  >
     {label
       ? <label className="control-label" htmlFor={stateKey}>
         {label}

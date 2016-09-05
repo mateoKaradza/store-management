@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, browserHistory } from 'react-router';
 import Layout from './components/layout/LayoutProvider';
-import Home from './components/home/Home';
+import Home from './components/home';
 import Login from './components/login/LoginProvider';
 import NotFound from './components/not-found';
 import Customers from './components/customers';
@@ -14,10 +14,10 @@ const Routes = () => {
       path: '/login',
       component: notAuthed(Login),
     }, {
-      path: '/',
+      path: '',
       component: requireAuth(Layout),
-      indexRoute: { component: Home },
       childRoutes: [
+        Home,
         Customers,
         NotFound,
       ],
