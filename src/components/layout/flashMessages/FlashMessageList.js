@@ -6,10 +6,13 @@ const FlashMessageList = ({ flashMessages, deleteFlashMessage }) => {
     <FlashMessage key={message.id} message={message} deleteFlashMessage={deleteFlashMessage} />
   );
 
+  if (flashMessages.length === 0)
+    return null;
+
   return (
-    <div className="row" style={{ marginTop: '10px' }}>
+    <section className="content-header">
       {flashMessageList}
-    </div>
+    </section>
   );
 };
 

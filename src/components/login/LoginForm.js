@@ -33,22 +33,28 @@ class LoginForm extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <Input
-          label={'Username'}
+          placeholder={'Username'}
           stateKey={'username'}
           value={username}
           type={'text'}
           required
           onChange={this.updateState}
-        />
+          hasFeedback
+        >
+          <span className="glyphicon glyphicon-user form-control-feedback"></span>
+        </Input>
         <Input
-          label={'Password'}
+          placeholder={'Password'}
           stateKey={'password'}
           value={password}
           type={'password'}
           required
           onChange={this.updateState}
-        />
-        <button type="submit" className="btn btn-primary">Submit</button>
+          hasFeedback
+        >
+          <span className="glyphicon glyphicon-lock form-control-feedback" />
+        </Input>
+        <button type="submit" className="btn btn-primary btn-block btn-flat">Submit</button>
       </form>
     );
   }

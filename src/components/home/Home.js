@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Home = () => (
-  <div>
+  <section className="content">
     <h2>Hi!</h2>
     <div>This is a protected route!</div>
-  </div>
+  </section>
 );
 
 export default Home;

@@ -1,26 +1,32 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import NavigationBar from './NavigationBar';
 import FlashMessageProvider from './flashMessages/FlashMessageProvider';
 
-const Layout = ({ auth, logout, children }) => {
-  const contentStyle = {
-    padding: '20px 10px',
-    border: '1px solid rgba(0, 0, 0, 0.15)',
-    borderRadius: '3px',
-  };
+class Layout extends Component {
+  componentDidMount() {
+    if (window.getAdminLTE().layout)
+      window.getAdminLTE().layout.fix();
+  }
 
-  return (
-    <div className="container">
-      <NavigationBar auth={auth} logout={logout} />
-      <FlashMessageProvider />
-      <div className="row" style={contentStyle}>
-        <div className="col-md-12">
+  render() {
+    const { auth, logout, children } = this.props;
+    return (
+      <div className="wrapper">
+        <NavigationBar auth={auth} logout={logout} />
+        <div className="content-wrapper" style={{ paddingTop: '0px' }}>
+          <FlashMessageProvider />
           {children}
         </div>
+        <footer className="main-footer">
+          <div className="pull-right hidden-xs">
+          Anything you want
+          </div>
+          <strong>Copyright &copy; 2016 <a href="https://moonrisecrystals.com">Moonrise Crystals</a>.</strong> All rights reserved.
+        </footer>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 Layout.propTypes = {
   auth: PropTypes.object.isRequired,

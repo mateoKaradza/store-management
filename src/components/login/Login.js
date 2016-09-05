@@ -4,9 +4,18 @@ import AlertDanger from '../shared/AlertDanger';
 
 const Login = ({ login, redirect, err }) => (
   <div>
-    <h1>Moonrise Crystals - Login</h1>
-    {err && <AlertDanger err={err} />}
-    <LoginForm login={login} redirect={redirect} err={err} />
+    <section className="content">
+      <div className="login-box">
+        <section className="login-logo">
+          Moonrise Crystals Login
+          {err && <AlertDanger err={err} />}
+        </section>
+        <div className="login-box-body">
+          <p className="login-box-msg">Login to proceed.</p>
+          <LoginForm login={login} redirect={redirect} err={err} />
+        </div>
+      </div>
+    </section>
   </div>
 );
 

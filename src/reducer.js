@@ -16,5 +16,5 @@ export default combineReducers({
   auth,
   flashMessages,
   lists,
-  details
+  details,
 });
