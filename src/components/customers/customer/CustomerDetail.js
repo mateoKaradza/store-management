@@ -1,11 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 
-import CustomerProfile from './CustomerProfile';
-import CustomerStats from './CustomerStats';
-import BasicInfo from './BasicInfo';
+import CustomerInfo from './CustomerInfo';
+import AdditionalInformation from './AdditionalInformation';
 import Orders from './Orders';
 import Items from './Items';
-import { getTotal } from '../../utils/orderCalculations';
 
 class CustomerDetail extends Component {
   constructor(props) {
@@ -25,9 +23,20 @@ class CustomerDetail extends Component {
         <section className="content">
           <div className="row">
             <div className="col-md-3">
-              <BasicInfo customer={customer} />
+              <CustomerInfo customer={customer} />
+              <div className="box box-primary">
+                <div className="box-header with-border">
+                  <h3 className="box-title">Actions</h3>
+                </div>
+                <div className="box-body">
+                  <button className="btn btn-primary btn-flat btn-block">Add new Order</button>
+                  <button className="btn btn-success btn-flat btn-block">Edit</button>
+                  <button className="btn btn-danger btn-flat btn-block">Delete</button>
+                </div>
+              </div>
             </div>
             <div className="col-md-9">
+              <AdditionalInformation />
               <div className="nav-tabs-custom">
                 <ul className="nav nav-tabs">
                   <li className="active">
@@ -35,12 +44,6 @@ class CustomerDetail extends Component {
                   </li>
                   <li className="">
                     <a href="#items" data-toggle="tab" aria-expanded="true">Items</a>
-                  </li>
-                  <li className="">
-                    <a href="#timeline" data-toggle="tab" aria-expanded="false">Timeline</a>
-                  </li>
-                  <li className="">
-                    <a href="#settings" data-toggle="tab" aria-expanded="false">Settings</a>
                   </li>
                 </ul>
                 <div className="tab-content">

@@ -1,4 +1,4 @@
-export function calculateOrder(items) {
+function calculateOrder(items) {
   let total = 0;
   let inventoryCost = 0;
   let grossTotal = 0;
@@ -54,6 +54,10 @@ export function calculateOrder(items) {
 
 export function getTotal(orders) {
   return orders.map(o => o.total).reduce((a, b) => a + b, 0);
+}
+
+export function getOrderStats(items) {
+  return calculateOrder(items);
 }
 
 export default getTotal;

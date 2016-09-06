@@ -1,0 +1,3 @@
+export const ORDERS_FETCH_SUCCESS = 'ORDERS_FETCH_SUCCESS';
+
+export default ORDERS_FETCH_SUCCESS;

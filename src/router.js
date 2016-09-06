@@ -5,6 +5,7 @@ import Home from './components/home';
 import Login from './components/login/LoginProvider';
 import NotFound from './components/not-found';
 import Customers from './components/customers';
+import Orders from './components/orders';
 import requireAuth from './components/utils/requireAuth';
 import notAuthed from './components/utils/notAuthed';
 
@@ -19,6 +20,7 @@ const Routes = () => {
       childRoutes: [
         Home,
         Customers,
+        Orders,
         NotFound,
       ],
     }],

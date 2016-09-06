@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const BasicInfo = ({ customer }) => (
+const CustomerInfo = ({ customer }) => (
   <div>
     <div className="box box-primary">
       <div className="box-body">
@@ -56,8 +56,8 @@ const BasicInfo = ({ customer }) => (
   </div>
 );
 
-BasicInfo.propTypes = {
+CustomerInfo.propTypes = {
   customer: PropTypes.object.isRequired,
 };
 
-export default BasicInfo;
+export default CustomerInfo;

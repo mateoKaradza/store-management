@@ -1,18 +1,12 @@
 import API from '../../config/api';
 import parseJSON from '../utils/apiCalls';
 
-import { CUSTOMERS_FILTER_SUCCESS } from './types';
+import { ORDERS_FETCH_SUCCESS } from './types';
 import { createFlashMessage } from '../layout/flashMessages/actions';
 
-function filterSuccess(customers) {
-  return { type: CUSTOMERS_FILTER_SUCCESS, customers };
-}
-
-export function filterCustomers(filter) {
+export function getOrders() {
   return dispatch => {
-    let url = `${API}customers/`;
-    if (filter !== '')
-      url += `search/${filter}`;
+    const url = `${API}orders/`;
     return fetch(url, {
       method: 'GET',
       headers: {
@@ -23,7 +17,7 @@ export function filterCustomers(filter) {
       .then(({ json, status }) => {
         if (status >= 400)
           throw new Error(`Status: ${status}`);
-        dispatch(filterSuccess(json));
+        dispatch({ type: ORDERS_FETCH_SUCCESS, orders: json });
       })
       .catch((err) => {
         dispatch(createFlashMessage(`Something went wrong => ${err.message}`));
@@ -31,4 +25,4 @@ export function filterCustomers(filter) {
   };
 }
 
-export default filterCustomers;
+export default getOrders;
