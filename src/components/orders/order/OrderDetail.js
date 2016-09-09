@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 import CustomerInfo from '../../customers/customer/CustomerInfo';
 import AdditionalInformation from './AdditionalInformation';
@@ -24,13 +25,12 @@ class CustomerDetail extends Component {
           <div className="row">
             <div className="col-md-3">
               <CustomerInfo customer={order} />
-              <div className="info-box">
-                <span className="info-box-icon bg-orange">
-                  <i className="fa fa-pencil" />
-                </span>
-                <div className="info-box-content">
-                  <span className="info-box-text">Order Notes</span>
-                  <span className="info-box-number">{order.notes || 'None'}</span>
+              <div className="box box-primary">
+                <div className="box-header with-border">
+                  <h3 className="box-title">Order Notes</h3>
+                </div>
+                <div className="box-body">
+                  <p>{order.order_notes || 'None'}</p>
                 </div>
               </div>
               <div className="box box-primary">
@@ -38,10 +38,38 @@ class CustomerDetail extends Component {
                   <h3 className="box-title">Actions</h3>
                 </div>
                 <div className="box-body">
-                  <button className="btn bg-purple btn-flat btn-block">VIEW CUSTOMER</button>
-                  <button className="btn btn-primary btn-flat btn-block">ADD NEW PRODUCT</button>
-                  <button className="btn btn-success btn-flat btn-block">EDIT ORDER</button>
-                  <button className="btn btn-danger btn-flat btn-block">DELETE ORDER</button>
+                  <Link to={`/Customers/${order.customer_id}`}>
+                    <button
+                      className="btn bg-purple btn-flat btn-block"
+                      style={{ marginTop: '5px' }}
+                    >
+                      VIEW CUSTOMER
+                    </button>
+                  </Link>
+                  <Link to={'CHANGE'}>
+                    <button
+                      className="btn btn-primary btn-flat btn-block"
+                      style={{ marginTop: '5px' }}
+                    >
+                      ADD NEW PRODUCT
+                    </button>
+                  </Link>
+                  <Link to={`/Orders/${order.order_id}/Edit`}>
+                    <button
+                      className="btn btn-success btn-flat btn-block"
+                      style={{ marginTop: '5px' }}
+                    >
+                      EDIT ORDER
+                    </button>
+                  </Link>
+                  <Link to={'CHANGE'}>
+                    <button
+                      className="btn btn-danger btn-flat btn-block"
+                      style={{ marginTop: '5px' }}
+                    >
+                      DELETE ORDER
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

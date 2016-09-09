@@ -1,7 +1,7 @@
 import { browserHistory } from 'react-router';
 
 import API from '../../config/api';
-import parseJSON from '../utils/apiCalls';
+import { parseJSON, getToken } from '../utils/apiCalls';
 import { LOGIN_SUCCESS, LOGOUT_SUCCESS, REDIRECTING, SET_REDIRECT } from './types';
 
 import { createFlashMessage, deleteFlashMessage } from '../layout/flashMessages/actions';
@@ -67,7 +67,7 @@ export function loadUserFromLocalStorage() {
     fetch(`${API}users/verify`, {
       method: 'GET',
       headers: {
-        'x-access-token': localStorage.getItem('token'),
+        'x-access-token': getToken(),
       },
     })
     .then(parseJSON)

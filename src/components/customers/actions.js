@@ -1,5 +1,5 @@
 import API from '../../config/api';
-import parseJSON from '../utils/apiCalls';
+import { parseJSON, getToken } from '../utils/apiCalls';
 
 import { CUSTOMERS_FILTER_SUCCESS } from './types';
 import { createFlashMessage } from '../layout/flashMessages/actions';
@@ -15,9 +15,7 @@ export function filterCustomers(filter) {
       url += `search/${filter}`;
     return fetch(url, {
       method: 'GET',
-      headers: {
-        'x-access-token': localStorage.getItem('token'),
-      },
+      headers: { 'x-access-token': getToken() },
     })
       .then(parseJSON)
       .then(({ json, status }) => {

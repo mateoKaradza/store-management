@@ -1,5 +1,6 @@
 import AllOrdersProvider from './AllOrdersProvider';
 import OrderDetailProvider from './order/OrderDetailProvider';
+import OrderFormProvider from './order/OrderFormProvider';
 
 export default {
   path: 'orders',
@@ -10,5 +11,8 @@ export default {
   }, {
     path: ':id',
     component: OrderDetailProvider,
+  }, {
+    path: ':order_id/edit',
+    component: OrderFormProvider,
   }],
 };

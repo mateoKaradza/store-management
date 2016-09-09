@@ -18,12 +18,12 @@ function mapItems(items) {
 
 const Items = ({ items }) => (
   <div className="tab-pane" id="items">
-    <table className="table table-bordered table-hover">
+    <table className="table table-bordered table-hover no-margin">
       <tbody>
         <tr>
           <th>Product Name</th>
           <th>Date</th>
-          <th>Quantity</th>
+          <th style={{ width: '90px' }}>Quantity</th>
           <th style={{ width: '70px' }}>Actions</th>
         </tr>
         {items ? mapItems(items) : null}

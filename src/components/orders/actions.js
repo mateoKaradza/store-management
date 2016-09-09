@@ -1,5 +1,5 @@
 import API from '../../config/api';
-import parseJSON from '../utils/apiCalls';
+import { parseJSON, getToken } from '../utils/apiCalls';
 
 import { ORDERS_FETCH_SUCCESS } from './types';
 import { createFlashMessage } from '../layout/flashMessages/actions';
@@ -9,9 +9,7 @@ export function getOrders() {
     const url = `${API}orders/`;
     return fetch(url, {
       method: 'GET',
-      headers: {
-        'x-access-token': localStorage.getItem('token'),
-      },
+      headers: { 'x-access-token': getToken() },
     })
       .then(parseJSON)
       .then(({ json, status }) => {

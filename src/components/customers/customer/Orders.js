@@ -19,7 +19,7 @@ function mapOrders(orders) {
 
 const Orders = ({ orders }) => (
   <div className="tab-pane active" id="orders">
-    <table className="table table-bordered table-hover">
+    <table className="table table-bordered table-hover no-margin">
       <tbody>
         <tr>
           <th style={{ width: '50px' }}>#</th>

@@ -6,6 +6,8 @@ import Login from './components/login/LoginProvider';
 import NotFound from './components/not-found';
 import Customers from './components/customers';
 import Orders from './components/orders';
+import Products from './components/products';
+
 import requireAuth from './components/utils/requireAuth';
 import notAuthed from './components/utils/notAuthed';
 
@@ -21,6 +23,7 @@ const Routes = () => {
         Home,
         Customers,
         Orders,
+        Products,
         NotFound,
       ],
     }],

@@ -31,7 +31,7 @@ const Items = ({ items }) => (
       <h3 className="box-title">Products bought</h3>
     </div>
     <div className="box-body">
-      <table className="table table-bordered table-hover">
+      <table className="table table-bordered table-hover no-margin">
         <tbody>
           <tr>
             <th>Product Name</th>

@@ -1,13 +1,12 @@
 import React, { PropTypes } from 'react';
-import classnames from 'classnames';
 
-const TextArea = ({ label, stateKey, value, required, readOnly, error, updateState }) => (
-  <div className={classnames('form-group', { 'has-error': error })}>
+const TextArea = ({ label, stateKey, value, required, readOnly, onChange }) => (
+  <div className="form-group">
     <label className="control-label" htmlFor={stateKey}>
       {label}
     </label>
     <textarea
-      rows={4}
+      rows={3}
       id={stateKey}
       name={stateKey}
       required={required}
@@ -15,20 +14,18 @@ const TextArea = ({ label, stateKey, value, required, readOnly, error, updateSta
       type="text"
       readOnly={readOnly}
       value={value}
-      onChange={updateState}
+      onChange={onChange}
     />
-    {error && <span className="help-block">{error}</span>}
   </div>
 );
 
 TextArea.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   stateKey: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  required: PropTypes.bool.isRequired,
+  value: PropTypes.string,
+  required: PropTypes.bool,
   readOnly: PropTypes.bool,
-  updateState: PropTypes.function.isRequired,
-  error: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default TextArea;

@@ -3,7 +3,7 @@ import { getOrderStats } from '../../utils/orderCalculations';
 
 const OrderStats = ({ items, additionalCost }) => {
   const stats = getOrderStats(items);
-  const totalCost = Number(stats.total) + Number(additionalCost);
+  const totalCost = (Number(stats.total) + Number(additionalCost)).toFixed(2);
   return (
     <div>
       <div className="row">
@@ -58,7 +58,7 @@ const OrderStats = ({ items, additionalCost }) => {
 
 OrderStats.propTypes = {
   items: PropTypes.array,
-  additionalCost: PropTypes.string,
+  additionalCost: PropTypes.number,
 };
 
 export default OrderStats;

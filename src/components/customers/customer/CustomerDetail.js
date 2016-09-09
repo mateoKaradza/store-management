@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 import CustomerInfo from './CustomerInfo';
 import AdditionalInformation from './AdditionalInformation';
@@ -29,9 +30,28 @@ class CustomerDetail extends Component {
                   <h3 className="box-title">Actions</h3>
                 </div>
                 <div className="box-body">
-                  <button className="btn btn-primary btn-flat btn-block">Add new Order</button>
-                  <button className="btn btn-success btn-flat btn-block">Edit</button>
-                  <button className="btn btn-danger btn-flat btn-block">Delete</button>
+                  <Link to={`/Customers/${customer.customer_id}/NewOrder`}>
+                    <button
+                      className="btn btn-primary btn-flat btn-block"
+                      style={{ marginTop: '5px' }}
+                    >
+                      Add new Order
+                    </button>
+                  </Link>
+                  <Link to={`/Customers/${customer.customer_id}/Edit`}>
+                    <button
+                      className="btn btn-success btn-flat btn-block"
+                      style={{ marginTop: '5px' }}
+                    >
+                      Edit
+                    </button>
+                  </Link>
+                  <button
+                    className="btn btn-danger btn-flat btn-block"
+                    style={{ marginTop: '5px' }}
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>

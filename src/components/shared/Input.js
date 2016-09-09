@@ -1,15 +1,12 @@
 import React, { PropTypes } from 'react';
-import classnames from 'classnames';
 
 // Text Input, Number, Date - <input type={type} />
 //
 // rework!!
 //
 
-const Input = ({ label, stateKey, value, required, readOnly, type, error, onChange, children, hasFeedback, placeholder }) => (
-  <div
-    className={classnames('form-group', { 'has-danger': error }, { 'has-feedback': hasFeedback })}
-  >
+const Input = ({ label, stateKey, value, required, readOnly, type, onChange, placeholder }) => (
+  <div className="form-group">
     {label
       ? <label className="control-label" htmlFor={stateKey}>
         {label}
@@ -27,8 +24,6 @@ const Input = ({ label, stateKey, value, required, readOnly, type, error, onChan
       onChange={onChange}
       placeholder={placeholder}
     />
-    {error && <span className="help-block">{error}</span>}
-    {children}
   </div>
 );
 
@@ -36,7 +31,7 @@ const Input = ({ label, stateKey, value, required, readOnly, type, error, onChan
 Input.propTypes = {
   label: PropTypes.string,
   stateKey: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.string.isRequired]),
   type: PropTypes.string,
   required: PropTypes.bool,
   readOnly: PropTypes.bool,
