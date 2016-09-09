@@ -3,13 +3,12 @@ import { browserHistory } from 'react-router';
 import API from '../../../config/api';
 import { parseJSON, getToken } from '../../utils/apiCalls';
 
-import { CUSTOMER_FETCH_SUCCESS, CUSTOMER_ORDERS_FETCH_SUCCESS,
-    CUSTOMER_ITEMS_FETCH_SUCCESS } from './types';
+import { PRODUCT_FETCH_SUCCESS, PRODUCT_ORDERS_FETCH_SUCCESS } from './types';
 import { createFlashMessage } from '../../layout/flashMessages/actions';
 
 function getOrders(id) {
   return dispatch => {
-    const url = `${API}customers/${id}/orders`;
+    const url = `${API}products/${id}/orders`;
     return fetch(url, {
       method: 'GET',
       headers: { 'x-access-token': getToken() },
@@ -18,7 +17,7 @@ function getOrders(id) {
       .then(({ json, status }) => {
         if (status >= 400)
           dispatch(createFlashMessage(`Something went wrong => Status: ${status}`));
-        dispatch({ type: CUSTOMER_ORDERS_FETCH_SUCCESS, orders: json });
+        dispatch({ type: PRODUCT_ORDERS_FETCH_SUCCESS, orders: json });
       })
       .catch((err) => {
         dispatch(createFlashMessage(`Something went wrong => ${err.message}`));
@@ -26,28 +25,9 @@ function getOrders(id) {
   };
 }
 
-function getItems(id) {
+export function getProduct(id) {
   return dispatch => {
-    const url = `${API}customers/${id}/items`;
-    return fetch(url, {
-      method: 'GET',
-      headers: { 'x-access-token': getToken() },
-    })
-      .then(parseJSON)
-      .then(({ json, status }) => {
-        if (status >= 400)
-          dispatch(createFlashMessage(`Something went wrong => Status: ${status}`));
-        dispatch({ type: CUSTOMER_ITEMS_FETCH_SUCCESS, items: json });
-      })
-      .catch((err) => {
-        dispatch(createFlashMessage(`Something went wrong => ${err.message}`));
-      });
-  };
-}
-
-export function getCustomer(id) {
-  return dispatch => {
-    const url = `${API}customers/${id}`;
+    const url = `${API}products/${id}`;
     return fetch(url, {
       method: 'GET',
       headers: { 'x-access-token': getToken() },
@@ -56,7 +36,7 @@ export function getCustomer(id) {
     .then(({ json, status }) => {
       if (status >= 400)
         dispatch(createFlashMessage(`Something went wrong => Status: ${status}`));
-      dispatch({ type: CUSTOMER_FETCH_SUCCESS, customer: json[0] });
+      dispatch({ type: PRODUCT_FETCH_SUCCESS, product: json[0] });
     })
     .catch((err) => {
       dispatch(createFlashMessage(`Something went wrong => ${err.message}`));
@@ -64,19 +44,18 @@ export function getCustomer(id) {
   };
 }
 
-export function loadCustomer(id) {
+export function loadProduct(id) {
   return dispatch => {
     dispatch(getOrders(id));
-    dispatch(getItems(id));
-    dispatch(getCustomer(id));
+    dispatch(getProduct(id));
   };
 }
 
-export function updateCustomer(customer) {
+export function updateProduct(product) {
   return dispatch => {
-    let url = `${API}customers/`;
-    if (customer.customer_id)
-      url += `${customer.customer_id}/edit`;
+    let url = `${API}products/`;
+    if (product.product_id)
+      url += `${product.product_id}/edit`;
     else
       url += 'new';
 
@@ -86,13 +65,13 @@ export function updateCustomer(customer) {
         'Content-Type': 'application/json',
         'x-access-token': getToken(),
       },
-      body: JSON.stringify({ customer }),
+      body: JSON.stringify({ product }),
     })
     .then(parseJSON)
     .then(({ json, status }) => {
       if (status >= 400)
-        dispatch(createFlashMessage('Customer with that username or email already exists'));
-      browserHistory.replace(`/Customers/${customer.customer_id || json.insertId || ''}`);
+        dispatch(createFlashMessage('Something went wrong.'));
+      browserHistory.replace(`/Products/${product.product_id || json.insertId || ''}`);
     });
   };
 }

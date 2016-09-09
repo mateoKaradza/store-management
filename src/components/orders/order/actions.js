@@ -4,12 +4,8 @@ import API from '../../../config/api';
 import { parseJSON, getToken } from '../../utils/apiCalls';
 
 import { ORDER_FETCH_SUCCESS, ORDER_ITEMS_FETCH_SUCCESS,
-  PLATFORMS_FETCH_SUCCESS, RESET_ORDER_FORM } from './types';
+  PLATFORMS_FETCH_SUCCESS } from './types';
 import { createFlashMessage } from '../../layout/flashMessages/actions';
-
-export function resetOrderForm() {
-  return { type: RESET_ORDER_FORM };
-}
 
 export function getPlatforms() {
   return dispatch => (
@@ -50,7 +46,6 @@ function getItems(id) {
 
 export function getOrder(id) {
   return dispatch => {
-    dispatch(getItems(id));
     const url = `${API}orders/${id}`;
     return fetch(url, {
       method: 'GET',
@@ -65,6 +60,13 @@ export function getOrder(id) {
     .catch((err) => {
       dispatch(createFlashMessage(`Something went wrong => ${err.message}`));
     });
+  };
+}
+
+export function loadOrder(id) {
+  return dispatch => {
+    dispatch(getOrder(id));
+    dispatch(getItems(id));
   };
 }
 

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import OrderDetail from './OrderDetail';
-import { getOrder } from './actions';
+import { loadOrder } from './actions';
 
 function mapStateToProps({ details }) {
   const { order } = details;
@@ -11,4 +11,4 @@ function mapStateToProps({ details }) {
   };
 }
 
-export default connect(mapStateToProps, { getOrder })(OrderDetail);
+export default connect(mapStateToProps, { loadOrder })(OrderDetail);

@@ -1,44 +1,34 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
-import CustomerInfo from './CustomerInfo';
-import AdditionalInformation from './AdditionalInformation';
+import ProductInfo from './ProductInfo';
 import Orders from './Orders';
-import Items from './Items';
 
-class CustomerDetail extends Component {
+class ProductDetail extends Component {
   constructor(props) {
     super(props);
 
     if (this.props.params.id)
-      this.props.loadCustomer(this.props.params.id);
+      this.props.loadProduct(this.props.params.id);
   }
 
   render() {
-    const { customer, orders, items } = this.props;
+    const { product, orders } = this.props;
     return (
       <div>
         <section className="content-header">
-          <h1>Customer Profile<small>all the info you need</small></h1>
+          <h1>Product Profile<small>all the info you need</small></h1>
         </section>
         <section className="content">
           <div className="row">
             <div className="col-md-3">
-              <CustomerInfo customer={customer} />
+              <ProductInfo product={product} />
               <div className="box box-primary">
                 <div className="box-header with-border">
                   <h3 className="box-title">Actions</h3>
                 </div>
                 <div className="box-body">
-                  <Link to={`/Customers/${customer.customer_id}/NewOrder`}>
-                    <button
-                      className="btn btn-primary btn-flat btn-block"
-                      style={{ marginTop: '5px' }}
-                    >
-                      Add new Order
-                    </button>
-                  </Link>
-                  <Link to={`/Customers/${customer.customer_id}/Edit`}>
+                  <Link to={`/Products/${product.product_id}/Edit`}>
                     <button
                       className="btn btn-success btn-flat btn-block"
                       style={{ marginTop: '5px' }}
@@ -56,19 +46,17 @@ class CustomerDetail extends Component {
               </div>
             </div>
             <div className="col-md-9">
-              <AdditionalInformation />
               <div className="nav-tabs-custom">
                 <ul className="nav nav-tabs">
                   <li className="active">
                     <a href="#orders" data-toggle="tab" aria-expanded="true">Orders</a>
                   </li>
                   <li className="">
-                    <a href="#items" data-toggle="tab" aria-expanded="true">Items</a>
+                    <a href="#supplies" data-toggle="tab" aria-expanded="true">Supplies</a>
                   </li>
                 </ul>
                 <div className="tab-content">
                   <Orders orders={orders} />
-                  <Items items={items} />
                 </div>
               </div>
             </div>
@@ -79,12 +67,11 @@ class CustomerDetail extends Component {
   }
 }
 
-CustomerDetail.propTypes = {
-  loadCustomer: PropTypes.func.isRequired,
-  customer: PropTypes.object,
+ProductDetail.propTypes = {
+  loadProduct: PropTypes.func.isRequired,
+  product: PropTypes.object,
   orders: PropTypes.array,
-  items: PropTypes.array,
   params: PropTypes.object,
 };
 
-export default CustomerDetail;
+export default ProductDetail;

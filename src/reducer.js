@@ -6,6 +6,7 @@ import orders from './components/orders/reducer';
 import products from './components/products/reducer';
 import customer from './components/customers/customer/reducer';
 import order from './components/orders/order/reducer';
+import product from './components/products/product/reducer';
 import platforms from './components/orders/platformsReducer';
 
 export const lists = combineReducers({
@@ -18,6 +19,7 @@ export const lists = combineReducers({
 export const details = combineReducers({
   customer,
   order,
+  product,
 });
 
 export default combineReducers({

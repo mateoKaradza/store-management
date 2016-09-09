@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import CustomerDetail from './CustomerDetail';
-import { getCustomer } from './actions';
+import { loadCustomer } from './actions';
 
 function mapStateToProps({ details }) {
   const { customer } = details;
@@ -12,4 +12,4 @@ function mapStateToProps({ details }) {
   };
 }
 
-export default connect(mapStateToProps, { getCustomer })(CustomerDetail);
+export default connect(mapStateToProps, { loadCustomer })(CustomerDetail);

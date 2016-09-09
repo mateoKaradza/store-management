@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 
+// Not in function yet
+
 const AdditionalInformation = () => (
   <div className="row">
     <div className="col-md-3">

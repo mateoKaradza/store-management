@@ -11,7 +11,7 @@ class CustomerDetail extends Component {
     super(props);
 
     if (this.props.params.id)
-      this.props.getOrder(this.props.params.id);
+      this.props.loadOrder(this.props.params.id);
   }
 
   render() {
@@ -86,7 +86,7 @@ class CustomerDetail extends Component {
 }
 
 CustomerDetail.propTypes = {
-  getOrder: PropTypes.func.isRequired,
+  loadOrder: PropTypes.func.isRequired,
   order: PropTypes.object,
   items: PropTypes.array,
   params: PropTypes.object,
