@@ -4,6 +4,7 @@ import API from '../../config/api';
 import { parseJSON, getToken } from '../utils/apiCalls';
 
 import { ORDER_ITEM_FETCH_SUCCESS } from './types';
+import { getItems } from '../orders/order/actions';
 import { createFlashMessage } from '../layout/flashMessages/actions';
 
 export function getOrderItem(id) {
@@ -45,7 +46,28 @@ export function updateItem(item) {
     .then(({ status }) => {
       if (status >= 400)
         dispatch(createFlashMessage('Something went wrong - Actions - OrderItem'));
+      dispatch(getItems(item.order_id));
       browserHistory.replace(`/Orders/${item.order_id}`);
+    });
+  };
+}
+
+export function deleteItem(item) {
+  return dispatch => {
+    const url = `${API}orderItems/${item.order_details_id}/delete`;
+    return fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': getToken(),
+      },
+      body: JSON.stringify({ item }),
+    })
+    .then(parseJSON)
+    .then(({ status }) => {
+      if (status >= 400)
+        dispatch(createFlashMessage('Something went wrong - Actions - OrderItem'));
+      dispatch(getItems(item.order_id));
     });
   };
 }

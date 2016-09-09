@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import ProductList from './ProductList';
-import Search from '../shared/Search';
 
 class AllOrders extends Component {
   constructor(props) {
@@ -20,19 +19,11 @@ class AllOrders extends Component {
         <section className="content">
           <div className="row">
             <div className="col-md-10">
-              <div className="box box-primary">
-                <div className="box-header with-border">
-                  <h3 className="box-title">Search for products</h3>
-                  <div className="box-tools pull-right">
-                    <div className="has-feedback">
-                      <Search action={getProducts} />
-                    </div>
-                  </div>
-                </div>
-                <div className="box-body">
-                  <ProductList products={products} changeStatus={changeStatus} />
-                </div>
-              </div>
+              <ProductList
+                products={products}
+                changeStatus={changeStatus}
+                getProducts={getProducts}
+              />
             </div>
             <div className="col-md-2">
               <div className="box box-primary">

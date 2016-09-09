@@ -25,7 +25,7 @@ export function getPlatforms() {
   );
 }
 
-function getItems(id) {
+export function getItems(id) {
   return dispatch => {
     const url = `${API}orders/${id}/items`;
     return fetch(url, {

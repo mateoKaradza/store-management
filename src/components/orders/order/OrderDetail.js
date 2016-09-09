@@ -5,6 +5,7 @@ import CustomerInfo from '../../customers/customer/CustomerInfo';
 import AdditionalInformation from './AdditionalInformation';
 import OrderItems from './OrderItems';
 import OrderStats from './OrderStats';
+import ProductList from './ProductList';
 
 class CustomerDetail extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class CustomerDetail extends Component {
   }
 
   render() {
-    const { order, items } = this.props;
+    const { order, items, products, getProducts, updateItem, addCustom, deleteItem } = this.props;
     return (
       <div>
         <section className="content-header">
@@ -76,7 +77,14 @@ class CustomerDetail extends Component {
             <div className="col-md-9">
               <AdditionalInformation order={order} />
               <OrderStats additionalCost={order.additional_cost} items={items} />
-              <OrderItems items={items} />
+              <ProductList
+                products={products}
+                getProducts={getProducts}
+                updateItem={updateItem}
+                addCustom={addCustom}
+                order_id={order.order_id}
+              />
+              <OrderItems items={items} deleteItem={deleteItem} />
             </div>
           </div>
         </section>
@@ -89,7 +97,12 @@ CustomerDetail.propTypes = {
   loadOrder: PropTypes.func.isRequired,
   order: PropTypes.object,
   items: PropTypes.array,
+  products: PropTypes.array,
+  getProducts: PropTypes.func,
   params: PropTypes.object,
+  updateItem: PropTypes.func,
+  addCustom: PropTypes.func,
+  deleteItem: PropTypes.func,
 };
 
 export default CustomerDetail;
