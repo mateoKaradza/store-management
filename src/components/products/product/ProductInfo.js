@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const ProductInfo = ({ product }) => (
+const ProductInfo = ({ product, changeStatus }) => (
   <div>
     <div className="box box-primary">
       <div className="box-body">
@@ -12,6 +12,15 @@ const ProductInfo = ({ product }) => (
         <h3 className="profile-username text-center">
           {`${product.name} #${product.product_id}`}
         </h3>
+        {product.status
+          ? <button
+            className="btn btn-danger btn-block"
+            onClick={() => changeStatus(product.product_id)}
+          >INACTIVE</button>
+          : <button
+            className="btn btn-success btn-block"
+            onClick={() => changeStatus(product.product_id)}
+          >ACTIVE</button>}
       </div>
     </div>
     <div className="box box-primary">
@@ -59,6 +68,7 @@ const ProductInfo = ({ product }) => (
 
 ProductInfo.propTypes = {
   product: PropTypes.object.isRequired,
+  changeStatus: PropTypes.func.isRequired,
 };
 
 export default ProductInfo;

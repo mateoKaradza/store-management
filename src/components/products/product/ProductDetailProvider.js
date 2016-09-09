@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import ProductDetail from './ProductDetail';
 import { loadProduct } from './actions';
+import { changeStatus } from '../actions';
 
 function mapStateToProps({ details }) {
   const { product } = details;
@@ -11,4 +12,4 @@ function mapStateToProps({ details }) {
   };
 }
 
-export default connect(mapStateToProps, { loadProduct })(ProductDetail);
+export default connect(mapStateToProps, { loadProduct, changeStatus })(ProductDetail);

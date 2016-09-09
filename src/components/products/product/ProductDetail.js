@@ -13,7 +13,7 @@ class ProductDetail extends Component {
   }
 
   render() {
-    const { product, orders } = this.props;
+    const { product, orders, changeStatus } = this.props;
     return (
       <div>
         <section className="content-header">
@@ -22,7 +22,7 @@ class ProductDetail extends Component {
         <section className="content">
           <div className="row">
             <div className="col-md-3">
-              <ProductInfo product={product} />
+              <ProductInfo product={product} changeStatus={changeStatus} />
               <div className="box box-primary">
                 <div className="box-header with-border">
                   <h3 className="box-title">Actions</h3>
@@ -72,6 +72,7 @@ ProductDetail.propTypes = {
   product: PropTypes.object,
   orders: PropTypes.array,
   params: PropTypes.object,
+  changeStatus: PropTypes.func.isRequired,
 };
 
 export default ProductDetail;

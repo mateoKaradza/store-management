@@ -11,6 +11,8 @@ export default function (state = [], action) {
     case PRODUCT_CHANGE_STATUS:
       obj = _.cloneDeep(state);
       index = _.indexOf(obj, _.find(obj, { product_id: action.product_id }));
+      if (index === -1)
+        return state;
       product = obj[index];
       product.status = !product.status;
       obj.splice(index, 1, product);

@@ -13,7 +13,7 @@ function mapItems(items) {
           <Link to={`/Products/${item.product_id}`}>
             <button className="btn btn-primary btn-flat btn-xs">View</button>
           </Link>
-          <Link to={`/Orders/Item/${item.order_details_id}`}>
+          <Link to={`/OrderItem/${item.order_details_id}`}>
             <button className="btn btn-success btn-flat btn-xs">Edit</button>
           </Link>
           <Link to={`/DELETE/${item.order_details_id}`}>
