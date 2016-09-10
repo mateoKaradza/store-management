@@ -17,7 +17,7 @@ function getOrders(id) {
       .then(parseJSON)
       .then(({ json, status }) => {
         if (status >= 400)
-          dispatch(createFlashMessage(`Something went wrong => Status: ${status}`));
+          throw new Error(`Status: ${status}`);
         dispatch({ type: CUSTOMER_ORDERS_FETCH_SUCCESS, orders: json });
       })
       .catch((err) => {
@@ -36,7 +36,7 @@ function getItems(id) {
       .then(parseJSON)
       .then(({ json, status }) => {
         if (status >= 400)
-          dispatch(createFlashMessage(`Something went wrong => Status: ${status}`));
+          throw new Error(`Status: ${status}`);
         dispatch({ type: CUSTOMER_ITEMS_FETCH_SUCCESS, items: json });
       })
       .catch((err) => {
@@ -55,7 +55,7 @@ export function getCustomer(id) {
     .then(parseJSON)
     .then(({ json, status }) => {
       if (status >= 400)
-        dispatch(createFlashMessage(`Something went wrong => Status: ${status}`));
+        throw new Error(`Status: ${status}`);
       dispatch({ type: CUSTOMER_FETCH_SUCCESS, customer: json[0] });
     })
     .catch((err) => {
@@ -77,8 +77,7 @@ export function updateCustomer(customer) {
     let url = `${API}customers/`;
     if (customer.customer_id)
       url += `${customer.customer_id}/edit`;
-    else
-      url += 'new';
+    else url += 'new';
 
     return fetch(url, {
       method: 'POST',
@@ -91,8 +90,11 @@ export function updateCustomer(customer) {
     .then(parseJSON)
     .then(({ json, status }) => {
       if (status >= 400)
-        dispatch(createFlashMessage('Customer with that username or email already exists'));
+        throw new Error(`Status: ${status}`);
       browserHistory.replace(`/Customers/${customer.customer_id || json.insertId || ''}`);
+    })
+    .catch((err) => {
+      dispatch(createFlashMessage(`Something went wrong => ${err.message}`));
     });
   };
 }

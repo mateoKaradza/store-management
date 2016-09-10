@@ -31,8 +31,7 @@ export function updateItem(item) {
     let url = `${API}orderItems/`;
     if (item.order_details_id)
       url += `${item.order_details_id}/edit`;
-    else
-      url += 'new';
+    else url += 'new';
 
     return fetch(url, {
       method: 'POST',
@@ -45,9 +44,12 @@ export function updateItem(item) {
     .then(parseJSON)
     .then(({ status }) => {
       if (status >= 400)
-        dispatch(createFlashMessage('Something went wrong - Actions - OrderItem'));
+        throw new Error(`Status: ${status}`);
       dispatch(getItems(item.order_id));
       browserHistory.replace(`/Orders/${item.order_id}`);
+    })
+    .catch((err) => {
+      dispatch(createFlashMessage(`Something went wrong => ${err.message}`));
     });
   };
 }
@@ -66,8 +68,11 @@ export function deleteItem(item) {
     .then(parseJSON)
     .then(({ status }) => {
       if (status >= 400)
-        dispatch(createFlashMessage('Something went wrong - Actions - OrderItem'));
+        throw new Error(`Status: ${status}`);
       dispatch(getItems(item.order_id));
+    })
+    .catch((err) => {
+      dispatch(createFlashMessage(`Something went wrong => ${err.message}`));
     });
   };
 }

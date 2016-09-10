@@ -16,7 +16,7 @@ function getOrders(id) {
       .then(parseJSON)
       .then(({ json, status }) => {
         if (status >= 400)
-          dispatch(createFlashMessage(`Something went wrong => Status: ${status}`));
+          throw new Error(`Status: ${status}`);
         dispatch({ type: PRODUCT_ORDERS_FETCH_SUCCESS, orders: json });
       })
       .catch((err) => {
@@ -35,7 +35,7 @@ export function getProduct(id) {
     .then(parseJSON)
     .then(({ json, status }) => {
       if (status >= 400)
-        dispatch(createFlashMessage(`Something went wrong => Status: ${status}`));
+        throw new Error(`Status: ${status}`);
       dispatch({ type: PRODUCT_FETCH_SUCCESS, product: json[0] });
     })
     .catch((err) => {
@@ -70,8 +70,11 @@ export function updateProduct(product) {
     .then(parseJSON)
     .then(({ json, status }) => {
       if (status >= 400)
-        dispatch(createFlashMessage('Something went wrong.'));
+        throw new Error(`Status: ${status}`);
       browserHistory.replace(`/Products/${product.product_id || json.insertId || ''}`);
+    })
+    .catch((err) => {
+      dispatch(createFlashMessage(`Something went wrong => ${err.message}`));
     });
   };
 }

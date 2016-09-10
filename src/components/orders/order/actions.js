@@ -72,11 +72,10 @@ export function loadOrder(id) {
 
 export function updateOrder(order) {
   return dispatch => {
-    let url = `${API}Orders/`;
+    let url = `${API}orders/`;
     if (order.order_id)
-      url += `${order.order_id}/Edit`;
-    else
-      url += 'New';
+      url += `${order.order_id}/edit`;
+    else url += 'new';
 
     return fetch(url, {
       method: 'POST',
@@ -89,8 +88,11 @@ export function updateOrder(order) {
     .then(parseJSON)
     .then(({ json, status }) => {
       if (status >= 400)
-        dispatch(createFlashMessage('Something went wrong - Actions - Order'));
+        throw new Error(`Status: ${status}`);
       browserHistory.replace(`/Orders/${order.order_id || json.insertId || ''}`);
+    })
+    .catch((err) => {
+      dispatch(createFlashMessage(`Something went wrong => ${err.message}`));
     });
   };
 }
