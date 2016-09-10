@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
-import Search from '../shared/Search';
-
 class ProductList extends Component {
   constructor(props) {
     super(props);
@@ -42,45 +40,32 @@ class ProductList extends Component {
   }
 
   render() {
-    const { products, getProducts } = this.props;
+    const { data } = this.props;
     return (
-      <div className="box box-primary">
-        <div className="box-header with-border">
-          <h3 className="box-title">Search for products</h3>
-          <div className="box-tools pull-right">
-            <div className="has-feedback">
-              <Search action={getProducts} />
-            </div>
-          </div>
-        </div>
-        <div className="box-body">
-          <table className="table table-bordered table-hover">
-            <tbody>
-              <tr>
-                <th style={{ width: '50px' }}>#</th>
-                <th>Name</th>
-                <th style={{ width: '80px' }}>Status</th>
-                <th style={{ width: '80px' }}>Price</th>
-                <th style={{ width: '80px' }}>Quantity</th>
-                <th style={{ width: '120px' }}>Inventory Cost</th>
-                <th style={{ width: '50px' }}>First</th>
-                <th style={{ width: '50px' }}>Second</th>
-                <th style={{ width: '50px' }}>Third</th>
-                <th style={{ width: '70px' }}>Actions</th>
-              </tr>
-              {products ? this.mapProducts(products) : null}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <table className="table table-hover">
+        <tbody>
+          <tr>
+            <th style={{ width: '50px' }}>#</th>
+            <th>Name</th>
+            <th style={{ width: '80px' }}>Status</th>
+            <th style={{ width: '80px' }}>Price</th>
+            <th style={{ width: '80px' }}>Quantity</th>
+            <th style={{ width: '120px' }}>Inventory Cost</th>
+            <th style={{ width: '50px' }}>First</th>
+            <th style={{ width: '50px' }}>Second</th>
+            <th style={{ width: '50px' }}>Third</th>
+            <th style={{ width: '70px' }}>Actions</th>
+          </tr>
+          {data ? this.mapProducts(data) : null}
+        </tbody>
+      </table>
     );
   }
 }
 
 ProductList.propTypes = {
-  products: PropTypes.array.isRequired,
+  data: PropTypes.array,
   changeStatus: PropTypes.func,
-  getProducts: PropTypes.func.isRequired,
 };
 
 export default ProductList;

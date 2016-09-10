@@ -6,6 +6,8 @@ import AdditionalInformation from './AdditionalInformation';
 import OrderItems from './OrderItems';
 import OrderStats from './OrderStats';
 import ProductList from './ProductList';
+import Table from '../../shared/Table';
+import Search from '../../shared/Search';
 
 class CustomerDetail extends Component {
   constructor(props) {
@@ -77,14 +79,34 @@ class CustomerDetail extends Component {
             <div className="col-md-9">
               <AdditionalInformation order={order} />
               <OrderStats additionalCost={order.additional_cost} items={items} />
-              <ProductList
-                products={products}
-                getProducts={getProducts}
-                updateItem={updateItem}
-                addCustom={addCustom}
-                order_id={order.order_id}
-              />
-              <OrderItems items={items} deleteItem={deleteItem} />
+              <div className="box box-primary">
+                <div className="box-header with-border">
+                  <h3 className="box-title">Add product to order</h3>
+                  <div className="box-tools pull-right">
+                    <div className="has-feedback">
+                      <Search action={getProducts} />
+                    </div>
+                  </div>
+                </div>
+                <Table data={products} pageSize={5}>
+                  <ProductList
+                    getProducts={getProducts}
+                    updateItem={updateItem}
+                    addCustom={addCustom}
+                    order_id={order.order_id}
+                  />
+                </Table>
+              </div>
+              <div className="box box-primary">
+                <div className="box-header with-border">
+                  <h3 className="box-title">Purchased items</h3>
+                </div>
+                <Table data={items} pageSize={10}>
+                  <OrderItems
+                    deleteItem={deleteItem}
+                  />
+                </Table>
+              </div>
             </div>
           </div>
         </section>

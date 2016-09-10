@@ -44,33 +44,26 @@ class Items extends Component {
     );
   }
   render() {
-    const { items } = this.props;
+    const { data } = this.props;
     return (
-      <div className="box box-primary">
-        <div className="box-header with-border">
-          <h3 className="box-title">Products bought</h3>
-        </div>
-        <div className="box-body">
-          <table className="table table-bordered table-hover no-margin">
-            <tbody>
-              <tr>
-                <th>Product Name</th>
-                <th style={{ width: '70px' }}>Price</th>
-                <th style={{ width: '70px' }}>Quantity</th>
-                <th style={{ width: '70px' }}>Total</th>
-                <th style={{ width: '150px' }}>Actions</th>
-              </tr>
-              {items ? this.mapItems(items) : null}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <table className="table table-hover no-margin">
+        <tbody>
+          <tr>
+            <th>Product Name</th>
+            <th style={{ width: '70px' }}>Price</th>
+            <th style={{ width: '70px' }}>Quantity</th>
+            <th style={{ width: '70px' }}>Total</th>
+            <th style={{ width: '150px' }}>Actions</th>
+          </tr>
+          {data ? this.mapItems(data) : null}
+        </tbody>
+      </table>
     );
   }
 }
 
 Items.propTypes = {
-  items: PropTypes.array,
+  data: PropTypes.array,
   deleteItem: PropTypes.func,
 };
 

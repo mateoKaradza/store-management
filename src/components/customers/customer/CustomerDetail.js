@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 
 import CustomerInfo from './CustomerInfo';
 import AdditionalInformation from './AdditionalInformation';
+import Table from '../../shared/Table';
 import Orders from './Orders';
 import Items from './Items';
 
@@ -67,8 +68,16 @@ class CustomerDetail extends Component {
                   </li>
                 </ul>
                 <div className="tab-content">
-                  <Orders orders={orders} />
-                  <Items items={items} />
+                  <div className="tab-pane active" id="orders">
+                    <Table data={orders}>
+                      <Orders />
+                    </Table>
+                  </div>
+                  <div className="tab-pane" id="items">
+                    <Table data={items}>
+                      <Items />
+                    </Table>
+                  </div>
                 </div>
               </div>
             </div>

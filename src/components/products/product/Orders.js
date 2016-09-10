@@ -19,27 +19,25 @@ function mapOrders(orders) {
   );
 }
 
-const Orders = ({ orders }) => (
-  <div className="tab-pane active" id="orders">
-    <table className="table table-bordered table-hover no-margin">
-      <tbody>
-        <tr>
-          <th style={{ width: '50px' }}>#</th>
-          <th>Platform</th>
-          <th>Date</th>
-          <th style={{ width: '70px' }}>Price</th>
-          <th style={{ width: '70px' }}>Quantity</th>
-          <th style={{ width: '110px' }}>Order Total</th>
-          <th style={{ width: '70px' }}>Actions</th>
-        </tr>
-        {orders ? mapOrders(orders) : null}
-      </tbody>
-    </table>
-  </div>
+const Orders = ({ data }) => (
+  <table className="table table-hover no-margin">
+    <tbody>
+      <tr>
+        <th style={{ width: '50px' }}>#</th>
+        <th>Platform</th>
+        <th>Date</th>
+        <th style={{ width: '70px' }}>Price</th>
+        <th style={{ width: '70px' }}>Quantity</th>
+        <th style={{ width: '110px' }}>Order Total</th>
+        <th style={{ width: '70px' }}>Actions</th>
+      </tr>
+      {data ? mapOrders(data) : null}
+    </tbody>
+  </table>
 );
 
 Orders.propTypes = {
-  orders: PropTypes.array,
+  data: PropTypes.array,
 };
 
 export default Orders;

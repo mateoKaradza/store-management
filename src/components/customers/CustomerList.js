@@ -1,15 +1,25 @@
 import React, { PropTypes } from 'react';
-
-import CustomerListItem from './CustomerListItem';
+import { Link } from 'react-router';
 
 function mapCustomers(customers) {
   return customers.map(customer =>
-    <CustomerListItem customer={customer} key={customer.customer_id} />
+    <tr key={customer.customer_id}>
+      <td>{customer.customer_id}</td>
+      <td>{customer.first_name}</td>
+      <td>{customer.last_name}</td>
+      <td>{customer.username}</td>
+      <td>{customer.email}</td>
+      <td>
+        <Link to={`/Customers/${customer.customer_id}`} style={{ color: 'black' }}>
+          <button className="btn btn-primary btn-block btn-flat btn-xs">View</button>
+        </Link>
+      </td>
+    </tr>
   );
 }
 
-const CustomerList = ({ customers }) => (
-  <table className="table table-bordered table-hover">
+const CustomerList = ({ data }) => (
+  <table className="table table-hover">
     <tbody>
       <tr>
         <th style={{ width: '50px' }}>#</th>
@@ -19,13 +29,13 @@ const CustomerList = ({ customers }) => (
         <th>Email</th>
         <th style={{ width: '70px' }}>Actions</th>
       </tr>
-      {customers ? mapCustomers(customers) : null}
+      {data ? mapCustomers(data) : null}
     </tbody>
   </table>
 );
 
 CustomerList.propTypes = {
-  customers: PropTypes.array.isRequired,
+  data: PropTypes.array,
 };
 
 export default CustomerList;

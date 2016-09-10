@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import OrderList from './OrderList';
+import Table from '../shared/Table';
 
 class AllOrders extends Component {
   constructor(props) {
@@ -22,9 +23,9 @@ class AllOrders extends Component {
                 <div className="box-header with-border">
                   <h3 className="box-title">Last 100 orders</h3>
                 </div>
-                <div className="box-body">
-                  <OrderList orders={orders} />
-                </div>
+                <Table data={orders}>
+                  <OrderList />
+                </Table>
               </div>
             </div>
           </div>

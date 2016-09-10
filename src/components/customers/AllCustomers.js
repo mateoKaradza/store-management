@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import Search from '../shared/Search';
 import CustomerList from './CustomerList';
+import Table from '../shared/Table';
 
 const AllCustomers = ({ customers, filter }) => (
   <div>
@@ -20,9 +21,9 @@ const AllCustomers = ({ customers, filter }) => (
                 </div>
               </div>
             </div>
-            <div className="box-body">
-              <CustomerList customers={customers} />
-            </div>
+            <Table data={customers}>
+              <CustomerList />
+            </Table>
           </div>
         </div>
         <div className="col-md-2">

@@ -20,8 +20,8 @@ function mapOrders(orders) {
   );
 }
 
-const OrderList = ({ orders }) => (
-  <table className="table table-bordered table-hover">
+const OrderList = ({ data }) => (
+  <table className="table table-hover">
     <tbody>
       <tr>
         <th style={{ width: '50px' }}>#</th>
@@ -33,13 +33,13 @@ const OrderList = ({ orders }) => (
         <th style={{ width: '65px' }}>Total</th>
         <th style={{ width: '70px' }}>Actions</th>
       </tr>
-      {orders ? mapOrders(orders) : null}
+      {data ? mapOrders(data) : null}
     </tbody>
   </table>
 );
 
 OrderList.propTypes = {
-  orders: PropTypes.array.isRequired,
+  data: PropTypes.array,
 };
 
 export default OrderList;
