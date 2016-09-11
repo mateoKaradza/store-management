@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 
 import ProductDetail from './ProductDetail';
-import { loadProduct } from './actions';
-import { changeStatus } from '../actions';
+import { loadProduct, changeStatus } from './actions';
 
 function mapStateToProps({ details }) {
   const { product } = details;

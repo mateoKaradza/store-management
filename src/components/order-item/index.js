@@ -1,7 +1,7 @@
 import OrderItemFormProvider from './OrderItemFormProvider';
 
 export default {
-  path: 'OrderItem',
+  path: 'OrderItems',
   childRoutes: [{
     path: 'new',
     component: OrderItemFormProvider,

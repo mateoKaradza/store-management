@@ -9,7 +9,7 @@ import { createFlashMessage } from '../../layout/flashMessages/actions';
 
 export function getPlatforms() {
   return dispatch => (
-    fetch(`${API}orders/platforms`, {
+    fetch(`${API}platforms`, {
       method: 'GET',
       headers: { 'x-access-token': getToken() },
     })
@@ -73,12 +73,14 @@ export function loadOrder(id) {
 export function updateOrder(order) {
   return dispatch => {
     let url = `${API}orders/`;
-    if (order.order_id)
-      url += `${order.order_id}/edit`;
-    else url += 'new';
+    let method = 'POST';
+    if (order.order_id) {
+      url += order.order_id;
+      method = 'PATCH';
+    }
 
     return fetch(url, {
-      method: 'POST',
+      method,
       headers: {
         'Content-Type': 'application/json',
         'x-access-token': getToken(),

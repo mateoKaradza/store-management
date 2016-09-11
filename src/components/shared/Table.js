@@ -52,6 +52,7 @@ class Table extends Component {
           {React.cloneElement(children, { data: pageData })}
         </div>
         <div className="box-footer">
+          {data.length} result(s)
           <div className="btn-group pull-right">
             {this.pagination(Math.ceil(data.length / pageSize))}
           </div>

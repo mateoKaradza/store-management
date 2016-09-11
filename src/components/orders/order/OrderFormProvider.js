@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import OrderForm from './OrderForm';
-import { getOrder, updateOrder, getPlatforms, resetOrderForm } from './actions';
+import { getOrder, updateOrder, getPlatforms } from './actions';
 
 function mapStateToProps({ details, lists }) {
   const { order } = details;
@@ -12,4 +12,4 @@ function mapStateToProps({ details, lists }) {
 }
 
 export default connect(mapStateToProps,
-  { getOrder, updateOrder, getPlatforms, resetOrderForm })(OrderForm);
+  { getOrder, updateOrder, getPlatforms })(OrderForm);

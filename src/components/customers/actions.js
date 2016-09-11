@@ -4,10 +4,6 @@ import { parseJSON, getToken } from '../utils/apiCalls';
 import { CUSTOMERS_FILTER_SUCCESS } from './types';
 import { createFlashMessage } from '../layout/flashMessages/actions';
 
-function filterSuccess(customers) {
-  return { type: CUSTOMERS_FILTER_SUCCESS, customers };
-}
-
 export function filterCustomers(filter) {
   return dispatch => {
     let url = `${API}customers/`;
@@ -21,7 +17,7 @@ export function filterCustomers(filter) {
       .then(({ json, status }) => {
         if (status >= 400)
           throw new Error(`Status: ${status}`);
-        dispatch(filterSuccess(json));
+        dispatch({ type: CUSTOMERS_FILTER_SUCCESS, customers: json });
       })
       .catch((err) => {
         dispatch(createFlashMessage(`Something went wrong => ${err.message}`));

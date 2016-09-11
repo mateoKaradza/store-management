@@ -43,18 +43,10 @@ class CustomerDetail extends Component {
                 <div className="box-body">
                   <Link to={`/Customers/${order.customer_id}`}>
                     <button
-                      className="btn bg-purple btn-flat btn-block"
-                      style={{ marginTop: '5px' }}
-                    >
-                      VIEW CUSTOMER
-                    </button>
-                  </Link>
-                  <Link to={'CHANGE'}>
-                    <button
                       className="btn btn-primary btn-flat btn-block"
                       style={{ marginTop: '5px' }}
                     >
-                      ADD NEW PRODUCT
+                      VIEW CUSTOMER
                     </button>
                   </Link>
                   <Link to={`/Orders/${order.order_id}/Edit`}>

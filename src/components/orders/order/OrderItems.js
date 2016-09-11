@@ -21,7 +21,7 @@ class Items extends Component {
   mapItems(items) {
     return items.map((item) =>
       <tr key={item.order_details_id}>
-        <td>{item.product_name}</td>
+        <td>{item.name}</td>
         <td>{item.price}</td>
         <td>{item.quantity}</td>
         <td>{item.total}</td>
@@ -30,7 +30,7 @@ class Items extends Component {
             <Link to={`/Products/${item.product_id}`}>
               <button className="btn btn-primary btn-flat btn-xs margin-r-5">View</button>
             </Link>
-            <Link to={`/OrderItem/${item.order_details_id}`}>
+            <Link to={`/OrderItems/${item.order_details_id}`}>
               <button className="btn btn-success btn-flat btn-xs margin-r-5">Edit</button>
             </Link>
             <button

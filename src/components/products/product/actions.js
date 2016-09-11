@@ -3,8 +3,34 @@ import { browserHistory } from 'react-router';
 import API from '../../../config/api';
 import { parseJSON, getToken } from '../../utils/apiCalls';
 
-import { PRODUCT_FETCH_SUCCESS, PRODUCT_ORDERS_FETCH_SUCCESS } from './types';
+import { PRODUCT_FETCH_SUCCESS, PRODUCT_ORDERS_FETCH_SUCCESS, PRODUCT_CHANGE_STATUS }
+  from './types';
 import { createFlashMessage } from '../../layout/flashMessages/actions';
+
+export function changeStatus(id) {
+  return dispatch => {
+    const url = `${API}products/${id}/status`;
+    return fetch(url, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': getToken(),
+      },
+      body: JSON.stringify({
+        product_id: id,
+      }),
+    })
+    .then(parseJSON)
+    .then(({ status }) => {
+      if (status >= 400)
+        throw new Error(`Status: ${status}`);
+      dispatch({ type: PRODUCT_CHANGE_STATUS, product_id: id });
+    })
+    .catch((err) => {
+      dispatch(createFlashMessage(`Something went wrong => ${err.message}`));
+    });
+  };
+}
 
 function getOrders(id) {
   return dispatch => {
@@ -54,13 +80,14 @@ export function loadProduct(id) {
 export function updateProduct(product) {
   return dispatch => {
     let url = `${API}products/`;
-    if (product.product_id)
-      url += `${product.product_id}/edit`;
-    else
-      url += 'new';
+    let method = 'POST';
+    if (product.product_id) {
+      url += product.product_id;
+      method = 'PATCH';
+    }
 
     return fetch(url, {
-      method: 'POST',
+      method,
       headers: {
         'Content-Type': 'application/json',
         'x-access-token': getToken(),

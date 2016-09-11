@@ -75,12 +75,14 @@ export function loadCustomer(id) {
 export function updateCustomer(customer) {
   return dispatch => {
     let url = `${API}customers/`;
-    if (customer.customer_id)
-      url += `${customer.customer_id}/edit`;
-    else url += 'new';
+    let method = 'POST';
+    if (customer.customer_id) {
+      method = 'PATCH';
+      url += customer.customer_id;
+    }
 
     return fetch(url, {
-      method: 'POST',
+      method,
       headers: {
         'Content-Type': 'application/json',
         'x-access-token': getToken(),

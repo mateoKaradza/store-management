@@ -120,7 +120,6 @@ OrderForm.propTypes = {
   platforms: PropTypes.array.isRequired,
   getOrder: PropTypes.func,
   getPlatforms: PropTypes.func.isRequired,
-  resetOrderForm: PropTypes.func.isRequired,
 };
 
 export default OrderForm;

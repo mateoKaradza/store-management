@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
-import { getProducts, changeStatus } from './actions';
+import { getProducts } from './actions';
+import { changeStatus } from './product/actions';
 import AllProducts from './AllProducts';
 
 function mapStateToProps({ lists }) {

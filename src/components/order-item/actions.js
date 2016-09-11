@@ -29,12 +29,14 @@ export function getOrderItem(id) {
 export function updateItem(item) {
   return dispatch => {
     let url = `${API}orderItems/`;
-    if (item.order_details_id)
-      url += `${item.order_details_id}/edit`;
-    else url += 'new';
+    let method = 'POST';
+    if (item.order_details_id) {
+      url += item.order_details_id;
+      method = 'PATCH';
+    }
 
     return fetch(url, {
-      method: 'POST',
+      method,
       headers: {
         'Content-Type': 'application/json',
         'x-access-token': getToken(),
@@ -56,9 +58,9 @@ export function updateItem(item) {
 
 export function deleteItem(item) {
   return dispatch => {
-    const url = `${API}orderItems/${item.order_details_id}/delete`;
+    const url = `${API}orderItems/${item.order_details_id}`;
     return fetch(url, {
-      method: 'POST',
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
         'x-access-token': getToken(),
