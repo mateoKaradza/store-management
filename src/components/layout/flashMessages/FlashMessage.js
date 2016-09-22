@@ -4,13 +4,25 @@ class FlashMessage extends React.Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
+    this.autoDismiss = this.autoDismiss.bind(this);
   }
 
   onClick() {
+    // transition animation would be nice
     this.props.deleteFlashMessage(this.props.message.id);
   }
 
+  autoDismiss() {
+    new Promise((resolve) => {
+      setTimeout(resolve, 2500);
+    }).then(() => {
+      this.onClick();
+    });
+  }
+
   render() {
+    this.autoDismiss();
+
     const { text } = this.props.message;
     return (
       <div className="alert alert-danger">

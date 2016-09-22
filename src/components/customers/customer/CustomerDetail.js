@@ -57,7 +57,7 @@ class CustomerDetail extends Component {
               </div>
             </div>
             <div className="col-md-9">
-              <AdditionalInformation />
+              <AdditionalInformation orders={orders} />
               <div className="nav-tabs-custom">
                 <ul className="nav nav-tabs">
                   <li className="active">

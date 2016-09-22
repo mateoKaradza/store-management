@@ -55,7 +55,7 @@ class OrderForm extends Component {
     const { platform_id, date, additional_cost, notes } = this.state;
 
     const data = this.props.platforms.map(i => (
-      { label: i.label, value: i.platform_id }
+      { label: i.name, value: i.platform_id }
     ));
 
     return (

@@ -2,9 +2,8 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 function mapOrders(orders) {
-  return orders.map((order, i) =>
+  return orders.map((order) =>
     <tr key={order.order_details_id}>
-      <td>{orders.length - i}</td>
       <td>{order.name}</td>
       <td>{order.date}</td>
       <td>${order.price}</td>
@@ -23,7 +22,6 @@ const Orders = ({ data }) => (
   <table className="table table-hover no-margin">
     <tbody>
       <tr>
-        <th style={{ width: '50px' }}>#</th>
         <th>Platform</th>
         <th>Date</th>
         <th style={{ width: '70px' }}>Price</th>

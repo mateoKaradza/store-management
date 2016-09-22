@@ -1,8 +1,12 @@
 import API from '../../config/api';
 import { parseJSON, getToken } from '../utils/apiCalls';
 
-import { PRODUCTS_FETCH_SUCCESS } from './types';
+import { PRODUCTS_FETCH_SUCCESS, PRODUCTS_SORT } from './types';
 import { createFlashMessage } from '../layout/flashMessages/actions';
+
+export function sortBy(field, reverse) {
+  return { type: PRODUCTS_SORT, field, reverse };
+}
 
 export function getProducts(filter) {
   return dispatch => {
@@ -25,5 +29,3 @@ export function getProducts(filter) {
       });
   };
 }
-
-export default getProducts;

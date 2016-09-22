@@ -4,7 +4,7 @@ import ProductList from './ProductList';
 import Table from '../shared/Table';
 import Search from '../shared/Search';
 
-const AllProducts = ({ products, getProducts, changeStatus }) => (
+const AllProducts = ({ products, getProducts, changeStatus, sortBy }) => (
   <div>
     <section className="content-header">
       <h1>All Products</h1>
@@ -22,7 +22,7 @@ const AllProducts = ({ products, getProducts, changeStatus }) => (
               </div>
             </div>
             <Table data={products}>
-              <ProductList changeStatus={changeStatus} />
+              <ProductList changeStatus={changeStatus} sortBy={sortBy} />
             </Table>
           </div>
         </div>
@@ -49,6 +49,7 @@ AllProducts.propTypes = {
   products: PropTypes.array.isRequired,
   getProducts: PropTypes.func.isRequired,
   changeStatus: PropTypes.func,
+  sortBy: PropTypes.func,
 };
 
 export default AllProducts;

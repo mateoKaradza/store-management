@@ -5,7 +5,12 @@ class ProductList extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      sort: '',
+    };
+
     this.mapProducts = this.mapProducts.bind(this);
+    this.sortData = this.sortData.bind(this);
   }
 
   mapProducts(products) {
@@ -39,6 +44,13 @@ class ProductList extends Component {
     );
   }
 
+  sortData(field) {
+    this.props.sortBy(field, field === this.state.sort);
+    if (this.state.sort === field)
+      this.setState({ sort: '' });
+    else this.setState({ sort: field });
+  }
+
   render() {
     const { data } = this.props;
     return (
@@ -46,14 +58,14 @@ class ProductList extends Component {
         <tbody>
           <tr>
             <th style={{ width: '50px' }}>#</th>
-            <th>Name</th>
-            <th style={{ width: '80px' }}>Status</th>
-            <th style={{ width: '80px' }}>Price</th>
-            <th style={{ width: '80px' }}>Quantity</th>
-            <th style={{ width: '120px' }}>Inventory Cost</th>
-            <th style={{ width: '50px' }}>First</th>
-            <th style={{ width: '50px' }}>Second</th>
-            <th style={{ width: '50px' }}>Third</th>
+            <th style={{ cursor: 'pointer' }}onClick={() => this.sortData('name')}>Name</th>
+            <th style={{ width: '80px', cursor: 'pointer' }} onClick={() => this.sortData('status')}>Status</th>
+            <th style={{ width: '80px', cursor: 'pointer' }} onClick={() => this.sortData('default_price')}>Price</th>
+            <th style={{ width: '80px', cursor: 'pointer' }} onClick={() => this.sortData('quantity')}>Quantity</th>
+            <th style={{ width: '120px', cursor: 'pointer' }} onClick={() => this.sortData('inventory_cost')} >Inventory Cost</th>
+            <th style={{ width: '65px', cursor: 'pointer' }} onClick={() => this.sortData('first_stone_earning')} >First</th>
+            <th style={{ width: '65px', cursor: 'pointer' }} onClick={() => this.sortData('second_stone_earning')} >Second</th>
+            <th style={{ width: '65px', cursor: 'pointer' }} onClick={() => this.sortData('third_stone_earning')} >Third</th>
             <th style={{ width: '70px' }}>Actions</th>
           </tr>
           {data ? this.mapProducts(data) : null}
@@ -66,6 +78,7 @@ class ProductList extends Component {
 ProductList.propTypes = {
   data: PropTypes.array,
   changeStatus: PropTypes.func,
+  sortBy: PropTypes.func,
 };
 
 export default ProductList;
