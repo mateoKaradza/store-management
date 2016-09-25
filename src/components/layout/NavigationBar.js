@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link, withRouter } from 'react-router';
 import classnames from 'classnames';
+import userIcon from '../../../public/img/user-male-icon.png';
 
 class NavigationBar extends Component {
 
@@ -36,7 +37,7 @@ class NavigationBar extends Component {
         <section className="sidebar">
           <div className="user-panel">
             <div className="pull-left image">
-              <img src="/dist/img/user-male-icon.png" className="img-circle" role="presentation" />
+              <img src={userIcon} className="img-circle" role="presentation" />
             </div>
             <div className="pull-left info">
               <p>Mateo Karadza</p>

@@ -6,7 +6,7 @@
     "eslint": "^3.2.2",
     "eslint-config-airbnb": "^10.0.0",
     "eslint-plugin-react": "^6.0.0",
-    "react-scripts": "0.2.3"
+    "react-scripts": "0.6.0"
   },
   "dependencies": {
     "classnames": "^2.2.5",

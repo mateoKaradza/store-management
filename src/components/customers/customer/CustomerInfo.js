@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react';
 
+import customerIcon from '../../../../public/img/user-female-icon.png';
+
 const CustomerInfo = ({ customer }) => (
   <div>
     <div className="box box-primary">
       <div className="box-body">
         <img
           className="profile-user-img img-responsive img-circle"
-          src="/dist/img/user-female-icon.png"
+          src={customerIcon}
           role="presentation"
         />
         <h3 className="profile-username text-center">
