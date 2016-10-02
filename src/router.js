@@ -6,6 +6,7 @@ import NotFound from './components/other';
 import Customers from './components/customers';
 import Orders from './components/orders';
 import Products from './components/products';
+import Vendors from './components/vendors';
 import OrderItem from './components/order-item';
 
 import Layout from './components/layout/LayoutProvider';
@@ -27,6 +28,7 @@ const Routes = () => {
         Orders,
         Products,
         OrderItem,
+        Vendors,
         NotFound,
       ],
     }],
