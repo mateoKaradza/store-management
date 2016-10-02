@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import VendorInfo from './VendorInfo';
-import Orders from './Orders';
+import Supplies from './Supplies';
 import Table from '../../shared/Table';
 
 class VendorDetail extends Component {
@@ -56,7 +56,7 @@ class VendorDetail extends Component {
                 <div className="tab-content">
                   <div className="tab-pane active" id="supplies">
                     <Table data={supplies}>
-                      <Orders />
+                      <Supplies />
                     </Table>
                   </div>
                 </div>
