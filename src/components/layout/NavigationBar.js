@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import userIcon from '../../../public/img/user-male-icon.png';
 
 class NavigationBar extends Component {
-
   mapLinks(links) {
     return links.map((link) => (
       <li key={link.to} className={classnames({ active: this.props.router.isActive(link.to) })}>

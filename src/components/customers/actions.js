@@ -1,5 +1,5 @@
 import API from '../../config/api';
-import { parseJSON, getToken } from '../utils/apiCalls';
+import { parseJSON, getToken } from '../utils';
 
 import { CUSTOMERS_FILTER_SUCCESS } from './types';
 import { createFlashMessage } from '../layout/flashMessages/actions';

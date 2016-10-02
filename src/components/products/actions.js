@@ -1,5 +1,5 @@
 import API from '../../config/api';
-import { parseJSON, getToken } from '../utils/apiCalls';
+import { parseJSON, getToken } from '../utils';
 
 import { PRODUCTS_FETCH_SUCCESS, PRODUCTS_SORT } from './types';
 import { createFlashMessage } from '../layout/flashMessages/actions';

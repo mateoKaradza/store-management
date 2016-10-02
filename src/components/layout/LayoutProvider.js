@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { logout } from '../login/actions';
+import { logout } from '../auth/actions';
 import Layout from './Layout';
 
 function mapStateToProps({ auth }) {

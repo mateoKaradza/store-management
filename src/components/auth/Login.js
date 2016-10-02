@@ -1,18 +1,18 @@
 import React, { PropTypes } from 'react';
+import FlashMessageProvider from '../layout/flashMessages/FlashMessageProvider';
 import LoginForm from './LoginForm';
-import AlertDanger from '../shared/AlertDanger';
 
-const Login = ({ login, redirect, err }) => (
+const Login = ({ login, redirect }) => (
   <div>
     <section className="content">
       <div className="login-box">
+        <FlashMessageProvider />
         <section className="login-logo">
           Moonrise Crystals Login
-          {err && <AlertDanger err={err} />}
         </section>
         <div className="login-box-body">
           <p className="login-box-msg">Login to proceed.</p>
-          <LoginForm login={login} redirect={redirect} err={err} />
+          <LoginForm login={login} redirect={redirect} />
         </div>
       </div>
     </section>
@@ -22,7 +22,6 @@ const Login = ({ login, redirect, err }) => (
 Login.propTypes = {
   login: PropTypes.func.isRequired,
   redirect: PropTypes.string,
-  err: PropTypes.string,
 };
 
 export default Login;

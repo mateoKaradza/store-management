@@ -1,10 +1,5 @@
 import React, { PropTypes } from 'react';
 
-// Text Input, Number, Date - <input type={type} />
-//
-// rework!!
-//
-
 const Input = ({ label, stateKey, value, required, readOnly, type, onChange, placeholder }) => (
   <div className="form-group">
     {label

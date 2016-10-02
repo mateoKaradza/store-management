@@ -1,14 +1,15 @@
 import React from 'react';
 import { Router, browserHistory } from 'react-router';
-import Layout from './components/layout/LayoutProvider';
+
 import Home from './components/home';
-import Login from './components/login/LoginProvider';
-import NotFound from './components/not-found';
+import NotFound from './components/other';
 import Customers from './components/customers';
 import Orders from './components/orders';
 import Products from './components/products';
 import OrderItem from './components/order-item';
 
+import Layout from './components/layout/LayoutProvider';
+import Login from './components/auth/LoginProvider';
 import requireAuth from './components/utils/requireAuth';
 import notAuthed from './components/utils/notAuthed';
 

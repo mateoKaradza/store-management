@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { dismissRedirect } from '../login/actions';
+import { dismissRedirect } from '../auth/actions';
 
 export default function (ComposedComponent) {
   class NotAuthed extends Component {

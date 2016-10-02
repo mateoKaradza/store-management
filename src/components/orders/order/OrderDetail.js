@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 import CustomerInfo from '../../customers/customer/CustomerInfo';
 import AdditionalInformation from './AdditionalInformation';
 import OrderItems from './OrderItems';
-import OrderStats from './OrderStats';
 import ProductList from './ProductList';
 import Table from '../../shared/Table';
 import Search from '../../shared/Search';
@@ -69,8 +68,6 @@ class CustomerDetail extends Component {
               </div>
             </div>
             <div className="col-md-9">
-              <AdditionalInformation order={order} />
-              <OrderStats additionalCost={order.additional_cost} items={items} />
               <div className="box box-primary">
                 <div className="box-header with-border">
                   <h3 className="box-title">Add product to order</h3>
@@ -89,6 +86,7 @@ class CustomerDetail extends Component {
                   />
                 </Table>
               </div>
+              <AdditionalInformation order={order} additionalCost={order.additional_cost} items={items} />
               <div className="box box-primary">
                 <div className="box-header with-border">
                   <h3 className="box-title">Purchased items</h3>

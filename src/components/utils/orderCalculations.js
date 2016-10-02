@@ -58,5 +58,3 @@ export function getTotal(orders) {
 export function getOrderStats(items) {
   return calculateOrder(items);
 }
-
-export default getTotal;

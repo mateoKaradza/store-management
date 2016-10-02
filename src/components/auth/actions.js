@@ -1,7 +1,7 @@
 import { browserHistory } from 'react-router';
 
 import API from '../../config/api';
-import { parseJSON, getToken } from '../utils/apiCalls';
+import { parseJSON, getToken } from '../utils';
 import { LOGIN_SUCCESS, LOGOUT_SUCCESS, REDIRECTING, SET_REDIRECT } from './types';
 
 import { createFlashMessage, deleteFlashMessage } from '../layout/flashMessages/actions';
@@ -30,9 +30,9 @@ function loginSuccess(user) {
   return { type: LOGIN_SUCCESS, user };
 }
 
-function loginError(err) {
+function loginError(message) {
   localStorage.removeItem('token');
-  return createFlashMessage(err, 'login');
+  return createFlashMessage(message, 'login');
 }
 
 export function login(username, password, url) {
@@ -51,13 +51,13 @@ export function login(username, password, url) {
     .then(parseJSON)
     .then(({ status, json }) => {
       if (status >= 400)
-        return dispatch(loginError(json.err));
+        throw new Error(json.err);
       dispatch(loginSuccess(json));
       dispatch(deleteFlashMessage('login'));
       return redirect(url || '/');
     })
     .catch((err) => {
-      dispatch(createFlashMessage(`Something went wrong => ${err.message}`));
+      dispatch(loginError(`Failed to login => ${err.message}`));
     });
   };
 }
@@ -73,11 +73,11 @@ export function loadUserFromLocalStorage() {
     .then(parseJSON)
     .then(({ status, json }) => {
       if (status >= 400)
-        return dispatch(loginError(json.err));
+        throw new Error(json.err);
       return dispatch(loginSuccess(json));
     })
-    .catch((err) => {
-      dispatch(createFlashMessage(`Something went wrong => ${err.message}`));
+    .catch(() => {
+      dispatch(loginError('Failed to load user'));
     });
   };
 }

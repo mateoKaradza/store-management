@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 
 import OrderForm from './OrderForm';
-import { getOrder, updateOrder, getPlatforms } from './actions';
+import { getOrder, updateOrder } from './actions';
+import { getPlatforms } from '../../platforms/actions';
 
 function mapStateToProps({ details, lists }) {
   const { order } = details;

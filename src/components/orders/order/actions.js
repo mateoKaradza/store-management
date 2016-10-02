@@ -1,29 +1,10 @@
 import { browserHistory } from 'react-router';
 
 import API from '../../../config/api';
-import { parseJSON, getToken } from '../../utils/apiCalls';
+import { parseJSON, getToken } from '../../utils';
 
-import { ORDER_FETCH_SUCCESS, ORDER_ITEMS_FETCH_SUCCESS,
-  PLATFORMS_FETCH_SUCCESS } from './types';
+import { ORDER_FETCH_SUCCESS, ORDER_ITEMS_FETCH_SUCCESS } from './types';
 import { createFlashMessage } from '../../layout/flashMessages/actions';
-
-export function getPlatforms() {
-  return dispatch => (
-    fetch(`${API}platforms`, {
-      method: 'GET',
-      headers: { 'x-access-token': getToken() },
-    })
-    .then(parseJSON)
-    .then(({ json, status }) => {
-      if (status >= 400)
-        throw new Error(`Status: ${status}`);
-      dispatch({ type: PLATFORMS_FETCH_SUCCESS, platforms: json });
-    })
-    .catch(err => (
-      dispatch(createFlashMessage(`Something went wrong => ${err.message}`))
-    ))
-  );
-}
 
 export function getItems(id) {
   return dispatch => {

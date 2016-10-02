@@ -1,7 +1,7 @@
 import { browserHistory } from 'react-router';
 
 import API from '../../../config/api';
-import { parseJSON, getToken } from '../../utils/apiCalls';
+import { parseJSON, getToken } from '../../utils';
 
 import { PRODUCT_FETCH_SUCCESS, PRODUCT_ORDERS_FETCH_SUCCESS, PRODUCT_CHANGE_STATUS }
   from './types';

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { setRedirect } from '../login/actions';
+import { setRedirect } from '../auth/actions';
 
 export default function (ComposedComponent) {
   class Authenticate extends Component {

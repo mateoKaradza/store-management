@@ -7,6 +7,10 @@ class FlashMessage extends React.Component {
     this.autoDismiss = this.autoDismiss.bind(this);
   }
 
+  componentWillUnmount() {
+    this.onClick();
+  }
+
   onClick() {
     // transition animation would be nice
     this.props.deleteFlashMessage(this.props.message.id);
@@ -21,7 +25,7 @@ class FlashMessage extends React.Component {
   }
 
   render() {
-    this.autoDismiss();
+    // this.autoDismiss();
 
     const { text } = this.props.message;
     return (
