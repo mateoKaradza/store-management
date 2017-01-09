@@ -10,9 +10,14 @@ function mapSupplies(supplies) {
       <td>{supply.weight}</td>
       <td>${supply.cost}</td>
       <td>
-        <Link to={`/Products/${supply.product_id}`} style={{ color: 'black' }}>
-          <button className="btn btn-primary btn-block btn-flat btn-xs">View</button>
-        </Link>
+        <div className="btn-group">
+          <Link to={`/Supplies/${supply.unique_id}`} style={{ color: 'black' }}>
+            <button className="btn btn-primary btn-flat btn-xs margin-r-5">View</button>
+          </Link>
+          <Link to={`/Products/${supply.product_id}`} style={{ color: 'black' }}>
+            <button className="btn btn-success btn-flat btn-xs margin-r-5">Product</button>
+          </Link>
+        </div>
       </td>
     </tr>
   );
@@ -27,7 +32,7 @@ const Orders = ({ data }) => (
         <th style={{ width: '110px' }}>Quantity</th>
         <th style={{ width: '70px' }}>Weight</th>
         <th style={{ width: '70px' }}>Cost</th>
-        <th style={{ width: '70px' }}>Actions</th>
+        <th style={{ width: '120px' }}>Actions</th>
       </tr>
       {data ? mapSupplies(data) : null}
     </tbody>

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import _ from 'lodash';
-import { PRODUCT_FETCH_SUCCESS, PRODUCT_ORDERS_FETCH_SUCCESS } from './types';
+import { PRODUCT_FETCH_SUCCESS, PRODUCT_ORDERS_FETCH_SUCCESS, PRODUCT_SUPPLIES_FETCH_SUCCESS } from './types';
 import { PRODUCT_CHANGE_STATUS } from '../types';
 
 function product(state = {}, action) {
@@ -26,7 +26,17 @@ function orders(state = [], action) {
   }
 }
 
+function supplies(state = [], action) {
+  switch (action.type) {
+    case PRODUCT_SUPPLIES_FETCH_SUCCESS:
+      return action.supplies;
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   product,
   orders,
+  supplies,
 });

@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 
 import ProductInfo from './ProductInfo';
 import Orders from './Orders';
+import Supplies from './Supplies';
 import Table from '../../shared/Table';
 
 class ProductDetail extends Component {
@@ -14,7 +15,7 @@ class ProductDetail extends Component {
   }
 
   render() {
-    const { product, orders, changeStatus } = this.props;
+    const { product, orders, changeStatus, supplies } = this.props;
     return (
       <div>
         <section className="content-header">
@@ -60,6 +61,11 @@ class ProductDetail extends Component {
                   <div className="tab-pane active" id="orders">
                     <Table data={orders}>
                       <Orders />
+                    </Table>
+                  </div>
+                  <div className="tab-pane" id="supplies">
+                    <Table data={supplies}>
+                      <Supplies />
                     </Table>
                   </div>
                 </div>

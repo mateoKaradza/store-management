@@ -1,0 +1,3 @@
+export const SUPPLY_FETCH_SUCCESS = 'SUPPLY_FETCH_SUCCESS';
+
+export default SUPPLY_FETCH_SUCCESS;

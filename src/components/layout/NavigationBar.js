@@ -39,7 +39,7 @@ class NavigationBar extends Component {
               <img src={userIcon} className="img-circle" role="presentation" />
             </div>
             <div className="pull-left info">
-              <p>Mateo Karadza</p>
+              <p>Moonrise Crystals</p>
               <button
                 onClick={logout}
                 className="btn bg-purple btn-block btn-flat btn-xs"

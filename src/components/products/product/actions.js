@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router';
 import API from '../../../config/api';
 import { parseJSON, getToken } from '../../utils';
 
-import { PRODUCT_FETCH_SUCCESS, PRODUCT_ORDERS_FETCH_SUCCESS, PRODUCT_CHANGE_STATUS }
+import { PRODUCT_FETCH_SUCCESS, PRODUCT_ORDERS_FETCH_SUCCESS, PRODUCT_CHANGE_STATUS, PRODUCT_SUPPLIES_FETCH_SUCCESS }
   from './types';
 import { createFlashMessage } from '../../layout/flashMessages/actions';
 
@@ -51,6 +51,25 @@ function getOrders(id) {
   };
 }
 
+function getSupplies(id) {
+  return dispatch => {
+    const url = `${API}products/${id}/supplies`;
+    return fetch(url, {
+      method: 'GET',
+      headers: { 'x-access-token': getToken() },
+    })
+      .then(parseJSON)
+      .then(({ json, status }) => {
+        if (status >= 400)
+          throw new Error(`Status: ${status}`);
+        dispatch({ type: PRODUCT_SUPPLIES_FETCH_SUCCESS, supplies: json });
+      })
+      .catch((err) => {
+        dispatch(createFlashMessage(`Something went wrong => ${err.message}`));
+      });
+  };
+}
+
 export function getProduct(id) {
   return dispatch => {
     const url = `${API}products/${id}`;
@@ -74,6 +93,7 @@ export function loadProduct(id) {
   return dispatch => {
     dispatch(getOrders(id));
     dispatch(getProduct(id));
+    dispatch(getSupplies(id));
   };
 }
 

@@ -8,6 +8,7 @@ function mapStateToProps({ details }) {
   return {
     product: product.product,
     orders: product.orders,
+    supplies: product.supplies,
   };
 }
 

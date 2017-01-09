@@ -8,6 +8,7 @@ import Orders from './components/orders';
 import Products from './components/products';
 import Vendors from './components/vendors';
 import OrderItem from './components/order-item';
+import Supplies from './components/supplies';
 
 import Layout from './components/layout/LayoutProvider';
 import Login from './components/auth/LoginProvider';
@@ -29,6 +30,7 @@ const Routes = () => {
         Products,
         OrderItem,
         Vendors,
+        Supplies,
         NotFound,
       ],
     }],

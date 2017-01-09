@@ -18,7 +18,7 @@ class VendorDetail extends Component {
     return (
       <div>
         <section className="content-header">
-          <h1>Product Profile<small>all the info you need</small></h1>
+          <h1>Vendor Profile<small>all the info you need</small></h1>
         </section>
         <section className="content">
           <div className="row">
