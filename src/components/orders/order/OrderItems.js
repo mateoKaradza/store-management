@@ -21,7 +21,7 @@ class Items extends Component {
   mapItems(items) {
     return items.map((item) =>
       <tr key={item.order_details_id}>
-        <td>{item.name}</td>
+        <td>{(item.feedback_message != null) && item.feedback_message != "" ? '+' : null}{item.name}</td>
         <td>{item.price}</td>
         <td>{item.quantity}</td>
         <td>{item.total}</td>
